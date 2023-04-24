@@ -12,21 +12,35 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private float launchAttackDetectRadius;
     private Rigidbody rb;
     private Transform attackTarget;
+
+    private Vector2 input;
     void Start()
     {
         rb = GetComponent<Rigidbody>();
     }
 
+    private void FixedUpdate()
+    {
+        Vector3 forceAdded = GetRelativeMovement(); 
+        rb.velocity = new Vector3(forceAdded.x * speed, rb.velocity.y, forceAdded.z * speed);
+    }
+
+    private Vector3 GetRelativeMovement()
+    {
+        Vector3 cameraForward = Camera.main.transform.forward;
+        cameraForward.y = 0f;
+        cameraForward = cameraForward.normalized;
+
+        Vector3 cameraRight = Camera.main.transform.right;
+        cameraRight.y = 0f;
+        cameraRight = cameraRight.normalized;
+
+        return cameraForward* input.y + cameraRight * input.x;
+    }
+
     private void OnMove(InputValue value)
     {
-        Vector2 input = value.Get<Vector2>();
-
-        Vector3 forceAdded = Vector3.zero;
-
-        forceAdded.x = input.normalized.x;
-        forceAdded.z = input.normalized.y;
-    
-        rb.velocity = new Vector3(forceAdded.x * speed, rb.velocity.y, forceAdded.z * speed);
+        input = value.Get<Vector2>();    
     }
 
     private void OnJump(InputValue value)
