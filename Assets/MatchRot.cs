@@ -4,7 +4,13 @@ using UnityEngine;
 
 public class MatchRot : MonoBehaviour
 {
-    [SerializeField] Transform rotationToMatch;
+    private Transform rotationToMatch;
+
+    private void Start()
+    {
+        rotationToMatch = Camera.main.transform;
+    }
+
     void Update()
     {
         transform.rotation = rotationToMatch.rotation;
