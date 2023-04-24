@@ -5,7 +5,7 @@ using UnityEngine.InputSystem;
 
 public class PlayerController : MonoBehaviour
 {
-    [SerializeField] private Transform camera;
+    //[SerializeField] private Transform camera;
     [SerializeField] private Transform launchAttackPoint;
     [SerializeField] private float speed = 10.0f;
     [SerializeField] private float jumpForce = 10.0f;
@@ -21,8 +21,12 @@ public class PlayerController : MonoBehaviour
 
     private void FixedUpdate()
     {
-        Vector3 forceAdded = GetRelativeMovement(); 
-        rb.velocity = new Vector3(forceAdded.x * speed, rb.velocity.y, forceAdded.z * speed);
+        if (rb.useGravity)
+        {
+            Vector3 forceAdded = GetRelativeMovement();
+            rb.velocity = new Vector3(forceAdded.x * speed, rb.velocity.y, forceAdded.z * speed);
+
+        }
     }
 
     private Vector3 GetRelativeMovement()
@@ -35,12 +39,12 @@ public class PlayerController : MonoBehaviour
         cameraRight.y = 0f;
         cameraRight = cameraRight.normalized;
 
-        return cameraForward* input.y + cameraRight * input.x;
+        return (cameraForward * input.y + cameraRight * input.x) * Time.deltaTime;
     }
 
     private void OnMove(InputValue value)
     {
-        input = value.Get<Vector2>();    
+        input = value.Get<Vector2>();
     }
 
     private void OnJump(InputValue value)
@@ -53,13 +57,13 @@ public class PlayerController : MonoBehaviour
         List<Transform> enemies = new List<Transform>();
         foreach (Collider coll in Physics.OverlapSphere(launchAttackPoint.position, launchAttackDetectRadius))
         {
-            if(coll.tag == "Enemy")
+            if (coll.tag == "Enemy")
             {
                 enemies.Add(coll.transform);
             }
         }
 
-        if(enemies.Count > 0)
+        if (enemies.Count > 0)
         {
             attackTarget = GetClosest(enemies);
 
@@ -69,20 +73,21 @@ public class PlayerController : MonoBehaviour
 
     private void LaunchAttack()
     {
-        Vector3 newDirection = attackTarget.position - transform.position;
-
+        rb.rotation = Quaternion.Euler(Vector3.zero);
         rb.velocity = Vector3.zero;
-
-        rb.AddForce(newDirection * 10, ForceMode.Impulse);
+        rb.useGravity = false;
+        Vector3 destination = attackTarget.position - rb.position;
+        destination = destination.normalized;
+        rb.AddRelativeForce(destination * 20.0f, ForceMode.Impulse);
     }
 
     private Transform GetClosest(List<Transform> points)
     {
         Transform closest = points[0];
 
-        for(int i = 0; i < points.Count; i++)
+        for (int i = 0; i < points.Count; i++)
         {
-            if(Vector3.Distance(transform.position, points[i].position) < Vector3.Distance(transform.position, closest.position))
+            if (Vector3.Distance(transform.position, points[i].position) < Vector3.Distance(transform.position, closest.position))
             {
                 closest = points[i];
             }
@@ -93,8 +98,9 @@ public class PlayerController : MonoBehaviour
 
     private void OnCollisionEnter(Collision other)
     {
-        if(other.gameObject.tag == "Enemy")
+        if (other.gameObject.tag == "Enemy")
         {
+            rb.useGravity = true;
             Destroy(other.gameObject);
         }
     }
