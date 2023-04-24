@@ -10,10 +10,18 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private float speed = 10.0f;
     [SerializeField] private float jumpForce = 10.0f;
     [SerializeField] private float launchAttackDetectRadius;
+    [SerializeField] private float maxHorVelocity = 5.0f;
+    [SerializeField] private float maxVertVelocity = 5.0f;
+
+    [SerializeField] private float fallingMultiplier = 5.0f;
+
     private Rigidbody rb;
     private Transform attackTarget;
 
     private Vector2 input;
+
+    private bool isJumping = false;
+
     void Start()
     {
         rb = GetComponent<Rigidbody>();
@@ -21,11 +29,49 @@ public class PlayerController : MonoBehaviour
 
     private void FixedUpdate()
     {
+        Vector3 forceAdded = GetRelativeMovement();
+
         if (rb.useGravity)
         {
-            Vector3 forceAdded = GetRelativeMovement();
-            rb.velocity = new Vector3(forceAdded.x * speed, rb.velocity.y, forceAdded.z * speed);
+            
 
+            rb.velocity = rb.velocity + new Vector3(forceAdded.x * speed, 0.0f, forceAdded.z * speed);
+
+            if (rb.velocity.y < 0.0f)
+            {
+                isJumping = false;
+                rb.velocity += Vector3.up * fallingMultiplier * Physics.gravity.y * Time.fixedDeltaTime;
+            }
+
+            CapVelocities();
+        }
+
+    }
+
+    private void CapVelocities()
+    {
+        if (Mathf.Abs(rb.velocity.z) > maxHorVelocity)
+        {
+            if (rb.velocity.z < 0)
+                rb.velocity = new Vector3(rb.velocity.x, rb.velocity.y, -maxHorVelocity);
+            else
+                rb.velocity = new Vector3(rb.velocity.x, rb.velocity.y, maxHorVelocity);
+        }
+
+        if (Mathf.Abs(rb.velocity.x) > maxHorVelocity)
+        {
+            if (rb.velocity.x < 0)
+                rb.velocity = new Vector3(-maxHorVelocity, rb.velocity.y, rb.velocity.z);
+            else
+                rb.velocity = new Vector3(maxHorVelocity, rb.velocity.y, rb.velocity.z);
+        }
+
+        if (Mathf.Abs(rb.velocity.y) > maxVertVelocity)
+        {
+            if (rb.velocity.y < 0)
+                rb.velocity = new Vector3(rb.velocity.x, -maxVertVelocity, rb.velocity.z);
+            else
+                rb.velocity = new Vector3(rb.velocity.x, maxVertVelocity, rb.velocity.z);
         }
     }
 
@@ -39,7 +85,7 @@ public class PlayerController : MonoBehaviour
         cameraRight.y = 0f;
         cameraRight = cameraRight.normalized;
 
-        return (cameraForward * input.y + cameraRight * input.x) * Time.deltaTime;
+        return (cameraForward * input.y + cameraRight * input.x) * Time.fixedDeltaTime;
     }
 
     private void OnMove(InputValue value)
@@ -49,7 +95,7 @@ public class PlayerController : MonoBehaviour
 
     private void OnJump(InputValue value)
     {
-        rb.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
+        rb.AddForce(Vector3.up * jumpForce, ForceMode.VelocityChange);
     }
 
     private void OnAttack(InputValue inputValue)
