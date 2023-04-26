@@ -7,24 +7,25 @@ public class PlayerController : MonoBehaviour
 {
     //[SerializeField] private Transform camera;
     [SerializeField] private Transform launchAttackPoint;
-    [SerializeField] private float speed = 10.0f;
-    [SerializeField] private float jumpForce = 10.0f;
-    [SerializeField] private float launchAttackDetectRadius;
-    [SerializeField] private float maxHorVelocity = 5.0f;
-    [SerializeField] private float maxVertVelocity = 5.0f;
-
-    [SerializeField] private float fallingMultiplier = 5.0f;
-
+    [SerializeField] private Transform cameraPoint;
+    [SerializeField] private PlayerSettings settings;
     private Rigidbody rb;
     private Transform attackTarget;
 
     private Vector2 input;
 
-    private bool isJumping = false;
+    private bool initCoyoteTimer = false;
+
+    private float coyoteCurrentTime;
 
     void Start()
     {
         rb = GetComponent<Rigidbody>();
+    }
+
+    private void Update()
+    {
+        
     }
 
     private void FixedUpdate()
@@ -33,14 +34,14 @@ public class PlayerController : MonoBehaviour
 
         if (rb.useGravity)
         {
-            
 
-            rb.velocity = rb.velocity + new Vector3(forceAdded.x * speed, 0.0f, forceAdded.z * speed);
+
+            rb.velocity = rb.velocity + new Vector3(forceAdded.x * settings.speed, 0.0f, forceAdded.z * settings.speed);
 
             if (rb.velocity.y < 0.0f)
             {
-                isJumping = false;
-                rb.velocity += Vector3.up * fallingMultiplier * Physics.gravity.y * Time.fixedDeltaTime;
+                //isJumping = false;
+                rb.velocity += Vector3.up * settings.fallingMultiplier * Physics.gravity.y * Time.fixedDeltaTime;
             }
 
             CapVelocities();
@@ -50,28 +51,28 @@ public class PlayerController : MonoBehaviour
 
     private void CapVelocities()
     {
-        if (Mathf.Abs(rb.velocity.z) > maxHorVelocity)
+        if (Mathf.Abs(rb.velocity.z) > settings.maxHorVelocity)
         {
             if (rb.velocity.z < 0)
-                rb.velocity = new Vector3(rb.velocity.x, rb.velocity.y, -maxHorVelocity);
+                rb.velocity = new Vector3(rb.velocity.x, rb.velocity.y, -settings.maxHorVelocity);
             else
-                rb.velocity = new Vector3(rb.velocity.x, rb.velocity.y, maxHorVelocity);
+                rb.velocity = new Vector3(rb.velocity.x, rb.velocity.y, settings.maxHorVelocity);
         }
 
-        if (Mathf.Abs(rb.velocity.x) > maxHorVelocity)
+        if (Mathf.Abs(rb.velocity.x) > settings.maxHorVelocity)
         {
             if (rb.velocity.x < 0)
-                rb.velocity = new Vector3(-maxHorVelocity, rb.velocity.y, rb.velocity.z);
+                rb.velocity = new Vector3(-settings.maxHorVelocity, rb.velocity.y, rb.velocity.z);
             else
-                rb.velocity = new Vector3(maxHorVelocity, rb.velocity.y, rb.velocity.z);
+                rb.velocity = new Vector3(settings.maxHorVelocity, rb.velocity.y, rb.velocity.z);
         }
 
-        if (Mathf.Abs(rb.velocity.y) > maxVertVelocity)
+        if (Mathf.Abs(rb.velocity.y) > settings.maxVertVelocity)
         {
             if (rb.velocity.y < 0)
-                rb.velocity = new Vector3(rb.velocity.x, -maxVertVelocity, rb.velocity.z);
+                rb.velocity = new Vector3(rb.velocity.x, -settings.maxVertVelocity, rb.velocity.z);
             else
-                rb.velocity = new Vector3(rb.velocity.x, maxVertVelocity, rb.velocity.z);
+                rb.velocity = new Vector3(rb.velocity.x, settings.maxVertVelocity, rb.velocity.z);
         }
     }
 
@@ -95,13 +96,15 @@ public class PlayerController : MonoBehaviour
 
     private void OnJump(InputValue value)
     {
-        rb.AddForce(Vector3.up * jumpForce, ForceMode.VelocityChange);
+
+        rb.AddForce(Vector3.up * settings.jumpForce, ForceMode.VelocityChange);
     }
+
 
     private void OnAttack(InputValue inputValue)
     {
         List<Transform> enemies = new List<Transform>();
-        foreach (Collider coll in Physics.OverlapSphere(launchAttackPoint.position, launchAttackDetectRadius))
+        foreach (Collider coll in Physics.OverlapSphere(launchAttackPoint.position, settings.launchAttackDetectRadius))
         {
             if (coll.tag == "Enemy")
             {
@@ -124,7 +127,7 @@ public class PlayerController : MonoBehaviour
         rb.useGravity = false;
         Vector3 destination = attackTarget.position - rb.position;
         destination = destination.normalized;
-        rb.AddRelativeForce(destination * 20.0f, ForceMode.Impulse);
+        rb.AddRelativeForce(destination * settings.launchAttackForce, ForceMode.Impulse);
     }
 
     private Transform GetClosest(List<Transform> points)
@@ -153,6 +156,7 @@ public class PlayerController : MonoBehaviour
 
     private void OnDrawGizmos()
     {
-        Gizmos.DrawWireSphere(launchAttackPoint.position, launchAttackDetectRadius);
+        if (settings)
+            Gizmos.DrawWireSphere(launchAttackPoint.position, settings.launchAttackDetectRadius);
     }
 }
