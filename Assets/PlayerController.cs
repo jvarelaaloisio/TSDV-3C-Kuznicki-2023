@@ -17,6 +17,7 @@ public class PlayerController : MonoBehaviour
     private bool initCoyoteTimer = false;
 
     private float coyoteCurrentTime;
+    private float coyoteMaxTime;
 
     void Start()
     {
@@ -25,7 +26,22 @@ public class PlayerController : MonoBehaviour
 
     private void Update()
     {
-        
+        CheckGrounded();
+    }
+
+    private void CheckGrounded()
+    {
+        RaycastHit hit;
+        Vector3 originOffset = cameraPoint.position + new Vector3(0, -GetComponent<SphereCollider>().radius, 0);
+
+        if(Physics.Raycast(originOffset, -cameraPoint.up, out hit, 0.5f))
+        {
+            Debug.LogError("Grounded");
+        }
+        else
+        {
+            coyoteCurrentTime += Time.deltaTime;
+        }
     }
 
     private void FixedUpdate()
