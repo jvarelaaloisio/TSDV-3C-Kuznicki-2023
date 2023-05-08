@@ -48,19 +48,10 @@ namespace Inputs
                     ""initialStateCheck"": false
                 },
                 {
-                    ""name"": ""Attack"",
+                    ""name"": ""Sprint"",
                     ""type"": ""Value"",
                     ""id"": ""eaccc77c-046a-4f7e-93e3-d318e95f1425"",
                     ""expectedControlType"": ""Button"",
-                    ""processors"": """",
-                    ""interactions"": """",
-                    ""initialStateCheck"": true
-                },
-                {
-                    ""name"": ""Camera"",
-                    ""type"": ""Value"",
-                    ""id"": ""4a531f0a-1754-4ffe-8561-28168386b6b0"",
-                    ""expectedControlType"": ""Vector2"",
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": true
@@ -92,7 +83,7 @@ namespace Inputs
                 {
                     ""name"": ""WASD"",
                     ""id"": ""dbe56936-cc91-4d07-9942-d5e3749da6db"",
-                    ""path"": ""2DVector(mode=2)"",
+                    ""path"": ""2DVector"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
@@ -191,68 +182,13 @@ namespace Inputs
                 {
                     ""name"": """",
                     ""id"": ""6af9fda2-aa7c-491a-b4d9-70d6f17fbece"",
-                    ""path"": ""<Keyboard>/e"",
+                    ""path"": ""<Keyboard>/shift"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""Attack"",
+                    ""action"": ""Sprint"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": ""Mouse"",
-                    ""id"": ""b9bd8de1-3bfc-4cf8-a3c0-d0d2e829d4b7"",
-                    ""path"": ""2DVector"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""Camera"",
-                    ""isComposite"": true,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": ""up"",
-                    ""id"": ""078286aa-7adf-47a5-8787-ea354292975f"",
-                    ""path"": ""<Mouse>/delta/up"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""Camera"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": true
-                },
-                {
-                    ""name"": ""down"",
-                    ""id"": ""83ec8c9f-2d33-461b-b2ff-0b748c1cad92"",
-                    ""path"": ""<Mouse>/delta/down"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""Camera"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": true
-                },
-                {
-                    ""name"": ""left"",
-                    ""id"": ""9bb7c568-4301-446d-9cd1-675e4cbbcdfe"",
-                    ""path"": ""<Mouse>/delta/left"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""Camera"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": true
-                },
-                {
-                    ""name"": ""right"",
-                    ""id"": ""4c3ef3aa-5ea7-4e44-93d3-e1ae60240aac"",
-                    ""path"": ""<Mouse>/delta/right"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""Camera"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": true
                 }
             ]
         },
@@ -261,9 +197,27 @@ namespace Inputs
             ""id"": ""df3c7c0d-6ff3-43b1-90ca-3c70085a46e4"",
             ""actions"": [
                 {
-                    ""name"": ""New action"",
+                    ""name"": ""Selection"",
                     ""type"": ""Button"",
                     ""id"": ""c6f21b5b-159c-4779-85a0-b559b4a4f3bc"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Enter"",
+                    ""type"": ""Button"",
+                    ""id"": ""a991b952-364e-4df1-8a81-451b29c2cfbc"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Exit"",
+                    ""type"": ""Button"",
+                    ""id"": ""83fabd0e-38d5-420c-9156-b65e4b99d6f9"",
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
                     ""interactions"": """",
@@ -272,13 +226,101 @@ namespace Inputs
             ],
             ""bindings"": [
                 {
-                    ""name"": """",
-                    ""id"": ""34f44adb-357d-44e2-bd15-055a79904b4f"",
-                    ""path"": """",
+                    ""name"": ""Arrows"",
+                    ""id"": ""bcbfdf38-57f1-4bcf-ac54-cd99b532d0be"",
+                    ""path"": ""1DAxis"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""New action"",
+                    ""action"": ""Selection"",
+                    ""isComposite"": true,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": ""negative"",
+                    ""id"": ""5e936043-c0e0-439d-b143-b1b217b7636c"",
+                    ""path"": ""<Keyboard>/downArrow"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Selection"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""positive"",
+                    ""id"": ""bdd3fe23-2a6d-46f7-84b4-1ad37579bfe4"",
+                    ""path"": ""<Keyboard>/upArrow"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Selection"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""WS"",
+                    ""id"": ""71bb926d-c70f-4e60-9e3d-bc83a3c6dcd1"",
+                    ""path"": ""1DAxis"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Selection"",
+                    ""isComposite"": true,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": ""negative"",
+                    ""id"": ""4fe83200-3e5e-4e1c-8a55-7e9e0ec1ad59"",
+                    ""path"": ""<Keyboard>/s"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Selection"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""positive"",
+                    ""id"": ""af8f6c1a-094f-4bf5-bd71-fefc24863c21"",
+                    ""path"": ""<Keyboard>/w"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Selection"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""b30e9592-278c-4a3d-a397-76f939a28d3e"",
+                    ""path"": ""<Keyboard>/enter"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Enter"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""8b38fe57-c419-46b0-8917-eee1e48b63ec"",
+                    ""path"": ""<Keyboard>/backspace"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Exit"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""bb5f8d29-44e9-4347-ba69-92dc49ac36bb"",
+                    ""path"": ""<Keyboard>/escape"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Exit"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -291,11 +333,12 @@ namespace Inputs
             m_World = asset.FindActionMap("World", throwIfNotFound: true);
             m_World_Move = m_World.FindAction("Move", throwIfNotFound: true);
             m_World_Jump = m_World.FindAction("Jump", throwIfNotFound: true);
-            m_World_Attack = m_World.FindAction("Attack", throwIfNotFound: true);
-            m_World_Camera = m_World.FindAction("Camera", throwIfNotFound: true);
+            m_World_Sprint = m_World.FindAction("Sprint", throwIfNotFound: true);
             // Menu
             m_Menu = asset.FindActionMap("Menu", throwIfNotFound: true);
-            m_Menu_Newaction = m_Menu.FindAction("New action", throwIfNotFound: true);
+            m_Menu_Selection = m_Menu.FindAction("Selection", throwIfNotFound: true);
+            m_Menu_Enter = m_Menu.FindAction("Enter", throwIfNotFound: true);
+            m_Menu_Exit = m_Menu.FindAction("Exit", throwIfNotFound: true);
         }
 
         public void Dispose()
@@ -359,16 +402,14 @@ namespace Inputs
         private List<IWorldActions> m_WorldActionsCallbackInterfaces = new List<IWorldActions>();
         private readonly InputAction m_World_Move;
         private readonly InputAction m_World_Jump;
-        private readonly InputAction m_World_Attack;
-        private readonly InputAction m_World_Camera;
+        private readonly InputAction m_World_Sprint;
         public struct WorldActions
         {
             private @PlayerInputs m_Wrapper;
             public WorldActions(@PlayerInputs wrapper) { m_Wrapper = wrapper; }
             public InputAction @Move => m_Wrapper.m_World_Move;
             public InputAction @Jump => m_Wrapper.m_World_Jump;
-            public InputAction @Attack => m_Wrapper.m_World_Attack;
-            public InputAction @Camera => m_Wrapper.m_World_Camera;
+            public InputAction @Sprint => m_Wrapper.m_World_Sprint;
             public InputActionMap Get() { return m_Wrapper.m_World; }
             public void Enable() { Get().Enable(); }
             public void Disable() { Get().Disable(); }
@@ -384,12 +425,9 @@ namespace Inputs
                 @Jump.started += instance.OnJump;
                 @Jump.performed += instance.OnJump;
                 @Jump.canceled += instance.OnJump;
-                @Attack.started += instance.OnAttack;
-                @Attack.performed += instance.OnAttack;
-                @Attack.canceled += instance.OnAttack;
-                @Camera.started += instance.OnCamera;
-                @Camera.performed += instance.OnCamera;
-                @Camera.canceled += instance.OnCamera;
+                @Sprint.started += instance.OnSprint;
+                @Sprint.performed += instance.OnSprint;
+                @Sprint.canceled += instance.OnSprint;
             }
 
             private void UnregisterCallbacks(IWorldActions instance)
@@ -400,12 +438,9 @@ namespace Inputs
                 @Jump.started -= instance.OnJump;
                 @Jump.performed -= instance.OnJump;
                 @Jump.canceled -= instance.OnJump;
-                @Attack.started -= instance.OnAttack;
-                @Attack.performed -= instance.OnAttack;
-                @Attack.canceled -= instance.OnAttack;
-                @Camera.started -= instance.OnCamera;
-                @Camera.performed -= instance.OnCamera;
-                @Camera.canceled -= instance.OnCamera;
+                @Sprint.started -= instance.OnSprint;
+                @Sprint.performed -= instance.OnSprint;
+                @Sprint.canceled -= instance.OnSprint;
             }
 
             public void RemoveCallbacks(IWorldActions instance)
@@ -427,12 +462,16 @@ namespace Inputs
         // Menu
         private readonly InputActionMap m_Menu;
         private List<IMenuActions> m_MenuActionsCallbackInterfaces = new List<IMenuActions>();
-        private readonly InputAction m_Menu_Newaction;
+        private readonly InputAction m_Menu_Selection;
+        private readonly InputAction m_Menu_Enter;
+        private readonly InputAction m_Menu_Exit;
         public struct MenuActions
         {
             private @PlayerInputs m_Wrapper;
             public MenuActions(@PlayerInputs wrapper) { m_Wrapper = wrapper; }
-            public InputAction @Newaction => m_Wrapper.m_Menu_Newaction;
+            public InputAction @Selection => m_Wrapper.m_Menu_Selection;
+            public InputAction @Enter => m_Wrapper.m_Menu_Enter;
+            public InputAction @Exit => m_Wrapper.m_Menu_Exit;
             public InputActionMap Get() { return m_Wrapper.m_Menu; }
             public void Enable() { Get().Enable(); }
             public void Disable() { Get().Disable(); }
@@ -442,16 +481,28 @@ namespace Inputs
             {
                 if (instance == null || m_Wrapper.m_MenuActionsCallbackInterfaces.Contains(instance)) return;
                 m_Wrapper.m_MenuActionsCallbackInterfaces.Add(instance);
-                @Newaction.started += instance.OnNewaction;
-                @Newaction.performed += instance.OnNewaction;
-                @Newaction.canceled += instance.OnNewaction;
+                @Selection.started += instance.OnSelection;
+                @Selection.performed += instance.OnSelection;
+                @Selection.canceled += instance.OnSelection;
+                @Enter.started += instance.OnEnter;
+                @Enter.performed += instance.OnEnter;
+                @Enter.canceled += instance.OnEnter;
+                @Exit.started += instance.OnExit;
+                @Exit.performed += instance.OnExit;
+                @Exit.canceled += instance.OnExit;
             }
 
             private void UnregisterCallbacks(IMenuActions instance)
             {
-                @Newaction.started -= instance.OnNewaction;
-                @Newaction.performed -= instance.OnNewaction;
-                @Newaction.canceled -= instance.OnNewaction;
+                @Selection.started -= instance.OnSelection;
+                @Selection.performed -= instance.OnSelection;
+                @Selection.canceled -= instance.OnSelection;
+                @Enter.started -= instance.OnEnter;
+                @Enter.performed -= instance.OnEnter;
+                @Enter.canceled -= instance.OnEnter;
+                @Exit.started -= instance.OnExit;
+                @Exit.performed -= instance.OnExit;
+                @Exit.canceled -= instance.OnExit;
             }
 
             public void RemoveCallbacks(IMenuActions instance)
@@ -473,12 +524,13 @@ namespace Inputs
         {
             void OnMove(InputAction.CallbackContext context);
             void OnJump(InputAction.CallbackContext context);
-            void OnAttack(InputAction.CallbackContext context);
-            void OnCamera(InputAction.CallbackContext context);
+            void OnSprint(InputAction.CallbackContext context);
         }
         public interface IMenuActions
         {
-            void OnNewaction(InputAction.CallbackContext context);
+            void OnSelection(InputAction.CallbackContext context);
+            void OnEnter(InputAction.CallbackContext context);
+            void OnExit(InputAction.CallbackContext context);
         }
     }
 }

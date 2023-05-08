@@ -21,4 +21,4 @@ MonoBehaviour:
   lowJumpMultiplier: 5
   targetLowJumpTimer: 0.1
   launchAttackDetectRadius: 9.82
-  launchAttackForce: 200
+  launchAttackForce: 400

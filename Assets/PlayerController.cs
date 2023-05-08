@@ -173,7 +173,7 @@ public class PlayerController : MonoBehaviour
         rb.rotation = Quaternion.Euler(Vector3.zero);
         rb.velocity = Vector3.zero;
         rb.useGravity = false;
-        Vector3 destination = attackTarget.position - rb.position;
+        Vector3 destination = attackTarget.position - transform.position;
         destination = destination.normalized;
         rb.AddRelativeForce(destination * settings.launchAttackForce, ForceMode.Impulse);
     }
