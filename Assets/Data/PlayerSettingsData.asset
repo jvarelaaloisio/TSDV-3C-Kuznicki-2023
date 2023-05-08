@@ -13,10 +13,12 @@ MonoBehaviour:
   m_Name: PlayerSettingsData
   m_EditorClassIdentifier: 
   speed: 30
-  coyoteTargetTime: 0
+  coyoteTargetTime: 0.3
   jumpForce: 15
   maxHorVelocity: 15
   maxVertVelocity: 25
   fallingMultiplier: 2.5
+  lowJumpMultiplier: 5
+  targetLowJumpTimer: 0.1
   launchAttackDetectRadius: 9.82
   launchAttackForce: 200

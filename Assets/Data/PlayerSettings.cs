@@ -12,6 +12,8 @@ public class PlayerSettings : ScriptableObject
     public float maxHorVelocity = 5.0f;
     public float maxVertVelocity = 5.0f;
     public float fallingMultiplier = 5.0f;
+    public float lowJumpMultiplier = 5.0f;
+    public float targetLowJumpTimer = 1.0f;
 
     [Header("AttackSettings")]
     public float launchAttackDetectRadius;

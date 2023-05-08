@@ -15,11 +15,15 @@ public class PlayerController : MonoBehaviour
     private Vector2 input;
 
     private bool initCoyoteTimer = false;
+    private bool isGrounded;
+    private bool isJumping;
+
+    private int jumpCount = 1;
 
     private float coyoteCurrentTime;
-    private float coyoteMaxTime;
+    private float currentTimeJumping = 0.0f;
 
-    void Start()
+    void Awake()
     {
         rb = GetComponent<Rigidbody>();
     }
@@ -32,16 +36,34 @@ public class PlayerController : MonoBehaviour
     private void CheckGrounded()
     {
         RaycastHit hit;
-        Vector3 originOffset = cameraPoint.position + new Vector3(0, -GetComponent<SphereCollider>().radius, 0);
+        Vector3 originOffset = transform.position + new Vector3(0, -GetComponent<SphereCollider>().radius, 0);
 
-        if(Physics.Raycast(originOffset, -cameraPoint.up, out hit, 0.5f))
+        Debug.DrawRay(transform.position, -Vector3.up, Color.green, 0.8f);
+        if (Physics.Raycast(transform.position, -Vector3.up, out hit, 0.8f))
         {
-            Debug.LogError("Grounded");
+            isGrounded = true;
+
+            if (currentTimeJumping > settings.targetLowJumpTimer)
+            {
+                isJumping = false;
+                currentTimeJumping = 0;
+                jumpCount = 1;
+            }
+
+            coyoteCurrentTime = 0;
+
+
+            Debug.LogError(isGrounded);
         }
         else
         {
-            coyoteCurrentTime += Time.deltaTime;
+            isGrounded = false;
+            Debug.LogError(isGrounded);
         }
+
+        if (!isGrounded)
+            coyoteCurrentTime += Time.deltaTime;
+
     }
 
     private void FixedUpdate()
@@ -50,8 +72,6 @@ public class PlayerController : MonoBehaviour
 
         if (rb.useGravity)
         {
-
-
             rb.velocity = rb.velocity + new Vector3(forceAdded.x * settings.speed, 0.0f, forceAdded.z * settings.speed);
 
             if (rb.velocity.y < 0.0f)
@@ -59,9 +79,14 @@ public class PlayerController : MonoBehaviour
                 //isJumping = false;
                 rb.velocity += Vector3.up * settings.fallingMultiplier * Physics.gravity.y * Time.fixedDeltaTime;
             }
+            else if (rb.velocity.y > 0f && !isGrounded)
+                rb.velocity += Vector3.up * Physics.gravity.y * (settings.lowJumpMultiplier - 1) * Time.deltaTime;
 
             CapVelocities();
         }
+
+        if (isJumping)
+            currentTimeJumping += Time.fixedDeltaTime;
 
     }
 
@@ -112,8 +137,15 @@ public class PlayerController : MonoBehaviour
 
     private void OnJump(InputValue value)
     {
-
-        rb.AddForce(Vector3.up * settings.jumpForce, ForceMode.VelocityChange);
+        if (isGrounded || coyoteCurrentTime <= settings.coyoteTargetTime)
+        {
+            if (jumpCount > 0)
+            {
+                isJumping = true;
+                jumpCount--;
+                rb.AddForce(Vector3.up * settings.jumpForce, ForceMode.VelocityChange);
+            }
+        }
     }
 
 
