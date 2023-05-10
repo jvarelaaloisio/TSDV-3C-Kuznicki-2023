@@ -49,7 +49,7 @@ namespace Inputs
                 },
                 {
                     ""name"": ""Attack"",
-                    ""type"": ""Value"",
+                    ""type"": ""Button"",
                     ""id"": ""eaccc77c-046a-4f7e-93e3-d318e95f1425"",
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
