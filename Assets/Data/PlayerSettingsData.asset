@@ -12,10 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d78876d654d1d664abc84b50c9fe825a, type: 3}
   m_Name: PlayerSettingsData
   m_EditorClassIdentifier: 
-  speed: 30
+  speed: 16
   coyoteTargetTime: 0.3
   jumpForce: 15
-  maxHorVelocity: 15
+  maxHorVelocity: 50
   maxVertVelocity: 25
   fallingMultiplier: 2.5
   lowJumpMultiplier: 5

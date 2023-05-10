@@ -65,9 +65,25 @@ public class PlayerController : MonoBehaviour
     {
         Vector3 forceAdded = GetRelativeMovement();
 
+        if (Mathf.Abs(rb.velocity.z) > settings.maxHorVelocity)
+        {
+            forceAdded = Vector3.zero;
+        }
+
+        if (Mathf.Abs(rb.velocity.x) > settings.maxHorVelocity)
+        {
+            forceAdded = Vector3.zero;
+        }
+
+        if (Mathf.Abs(rb.velocity.y) > settings.maxVertVelocity)
+        {
+            forceAdded = Vector3.zero;
+        }
+
         if (rb.useGravity)
         {
-            rb.velocity = rb.velocity + new Vector3(forceAdded.x * settings.speed, 0.0f, forceAdded.z * settings.speed);
+            rb.AddForce(new Vector3(forceAdded.x * settings.speed, 0.0f, forceAdded.z * settings.speed), ForceMode.VelocityChange);
+            //rb.velocity = rb.velocity + new Vector3(forceAdded.x * settings.speed, 0.0f, forceAdded.z * settings.speed);
 
             if (rb.velocity.y < 0.0f)
             {
@@ -77,7 +93,7 @@ public class PlayerController : MonoBehaviour
             else if (rb.velocity.y > 0f && !isGrounded)
                 rb.velocity += Vector3.up * Physics.gravity.y * (settings.lowJumpMultiplier - 1) * Time.deltaTime;
 
-            CapVelocities();
+            //CapVelocities();
         }
 
         if (isJumping)
@@ -146,6 +162,7 @@ public class PlayerController : MonoBehaviour
 
     private void OnAttack(InputValue inputValue)
     {
+        Debug.Log(rb.velocity);
         List<Transform> enemies = new List<Transform>();
         foreach (Collider coll in Physics.OverlapSphere(launchAttackPoint.position, settings.launchAttackDetectRadius))
         {
