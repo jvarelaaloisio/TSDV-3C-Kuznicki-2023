@@ -48,7 +48,7 @@ namespace Inputs
                     ""initialStateCheck"": false
                 },
                 {
-                    ""name"": ""Sprint"",
+                    ""name"": ""Attack"",
                     ""type"": ""Value"",
                     ""id"": ""eaccc77c-046a-4f7e-93e3-d318e95f1425"",
                     ""expectedControlType"": ""Button"",
@@ -186,7 +186,7 @@ namespace Inputs
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""Sprint"",
+                    ""action"": ""Attack"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -333,7 +333,7 @@ namespace Inputs
             m_World = asset.FindActionMap("World", throwIfNotFound: true);
             m_World_Move = m_World.FindAction("Move", throwIfNotFound: true);
             m_World_Jump = m_World.FindAction("Jump", throwIfNotFound: true);
-            m_World_Sprint = m_World.FindAction("Sprint", throwIfNotFound: true);
+            m_World_Attack = m_World.FindAction("Attack", throwIfNotFound: true);
             // Menu
             m_Menu = asset.FindActionMap("Menu", throwIfNotFound: true);
             m_Menu_Selection = m_Menu.FindAction("Selection", throwIfNotFound: true);
@@ -402,14 +402,14 @@ namespace Inputs
         private List<IWorldActions> m_WorldActionsCallbackInterfaces = new List<IWorldActions>();
         private readonly InputAction m_World_Move;
         private readonly InputAction m_World_Jump;
-        private readonly InputAction m_World_Sprint;
+        private readonly InputAction m_World_Attack;
         public struct WorldActions
         {
             private @PlayerInputs m_Wrapper;
             public WorldActions(@PlayerInputs wrapper) { m_Wrapper = wrapper; }
             public InputAction @Move => m_Wrapper.m_World_Move;
             public InputAction @Jump => m_Wrapper.m_World_Jump;
-            public InputAction @Sprint => m_Wrapper.m_World_Sprint;
+            public InputAction @Attack => m_Wrapper.m_World_Attack;
             public InputActionMap Get() { return m_Wrapper.m_World; }
             public void Enable() { Get().Enable(); }
             public void Disable() { Get().Disable(); }
@@ -425,9 +425,9 @@ namespace Inputs
                 @Jump.started += instance.OnJump;
                 @Jump.performed += instance.OnJump;
                 @Jump.canceled += instance.OnJump;
-                @Sprint.started += instance.OnSprint;
-                @Sprint.performed += instance.OnSprint;
-                @Sprint.canceled += instance.OnSprint;
+                @Attack.started += instance.OnAttack;
+                @Attack.performed += instance.OnAttack;
+                @Attack.canceled += instance.OnAttack;
             }
 
             private void UnregisterCallbacks(IWorldActions instance)
@@ -438,9 +438,9 @@ namespace Inputs
                 @Jump.started -= instance.OnJump;
                 @Jump.performed -= instance.OnJump;
                 @Jump.canceled -= instance.OnJump;
-                @Sprint.started -= instance.OnSprint;
-                @Sprint.performed -= instance.OnSprint;
-                @Sprint.canceled -= instance.OnSprint;
+                @Attack.started -= instance.OnAttack;
+                @Attack.performed -= instance.OnAttack;
+                @Attack.canceled -= instance.OnAttack;
             }
 
             public void RemoveCallbacks(IWorldActions instance)
@@ -524,7 +524,7 @@ namespace Inputs
         {
             void OnMove(InputAction.CallbackContext context);
             void OnJump(InputAction.CallbackContext context);
-            void OnSprint(InputAction.CallbackContext context);
+            void OnAttack(InputAction.CallbackContext context);
         }
         public interface IMenuActions
         {

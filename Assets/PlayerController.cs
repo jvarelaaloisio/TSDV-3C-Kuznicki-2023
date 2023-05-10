@@ -37,8 +37,7 @@ public class PlayerController : MonoBehaviour
     {
         RaycastHit hit;
         Vector3 originOffset = transform.position + new Vector3(0, -GetComponent<SphereCollider>().radius, 0);
-
-        Debug.DrawRay(transform.position, -Vector3.up, Color.green, 0.8f);
+            
         if (Physics.Raycast(transform.position, -Vector3.up, out hit, 0.8f))
         {
             isGrounded = true;
@@ -51,14 +50,10 @@ public class PlayerController : MonoBehaviour
             }
 
             coyoteCurrentTime = 0;
-
-
-            Debug.LogError(isGrounded);
         }
         else
         {
             isGrounded = false;
-            Debug.LogError(isGrounded);
         }
 
         if (!isGrounded)

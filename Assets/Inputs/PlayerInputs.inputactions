@@ -24,7 +24,7 @@
                     "initialStateCheck": false
                 },
                 {
-                    "name": "Sprint",
+                    "name": "Attack",
                     "type": "Value",
                     "id": "eaccc77c-046a-4f7e-93e3-d318e95f1425",
                     "expectedControlType": "Button",
@@ -162,7 +162,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "Sprint",
+                    "action": "Attack",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

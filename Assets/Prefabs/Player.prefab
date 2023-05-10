@@ -236,4 +236,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   launchAttackPoint: {fileID: 1691113766950313706}
+  cameraPoint: {fileID: 1691113767108639658}
   settings: {fileID: 11400000, guid: d1bd592a28e0a6745ada6e0a85aaca5a, type: 2}
