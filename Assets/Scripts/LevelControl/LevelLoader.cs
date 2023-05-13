@@ -11,7 +11,7 @@ public class LevelLoader : MonoBehaviour
     [ContextMenu("CARLIIITOOOOO")]
     public void LoadLevel()
     {
-        SceneManager.LoadSceneAsync(level1BuildIndex,LoadSceneMode.Additive);
+        SceneManager.LoadScene(level1BuildIndex);
     }
 
     [ContextMenu("MARTEEEEEN", true)]
@@ -23,6 +23,6 @@ public class LevelLoader : MonoBehaviour
     [ContextMenu("UnloadLevel")]
     private void UnloadLevel()
     {
-        SceneManager.UnloadSceneAsync(level1BuildIndex);
+        //SceneManager.UnloadScene(level1BuildIndex);
     }
 }
