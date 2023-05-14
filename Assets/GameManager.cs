@@ -5,6 +5,21 @@ using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviourSingleton<GameManager>
 {
+    [SerializeField]
+    private int level1BuildIndex = 1;
+
+    public void LoadLevel()
+    {
+        SceneManager.LoadScene(level1BuildIndex, LoadSceneMode.Single);
+        //UnloadLevel();
+    }
+
+    private void UnloadLevel()
+    {
+        SceneManager.UnloadSceneAsync(0);
+        //SceneManager.UnloadSceneAsync(0, UnloadSceneOptions.UnloadAllEmbeddedSceneObjects);
+    }
+
     public void LoadMenu()
     {
         SceneManager.LoadScene(0);
