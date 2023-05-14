@@ -27,6 +27,7 @@ public class GameManager : MonoBehaviourSingleton<GameManager>
 
     public void LoadGameLevel(bool LoadNext)
     {
+        Debug.Log(LoadNext);
         if (LoadNext)
             SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
         else

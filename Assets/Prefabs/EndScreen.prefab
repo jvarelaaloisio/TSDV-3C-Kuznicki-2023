@@ -66,7 +66,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Button
+  m_text: Main Menu
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: f15bcb4fbb031f742977dc798bddbd98, type: 2}
   m_sharedMaterial: {fileID: 1874236024296348284, guid: f15bcb4fbb031f742977dc798bddbd98, type: 2}
@@ -148,7 +148,7 @@ GameObject:
   - component: {fileID: 1833308118180439418}
   - component: {fileID: 1833308118180439413}
   m_Layer: 5
-  m_Name: Button (1)
+  m_Name: NextLevelButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -170,10 +170,10 @@ RectTransform:
   m_Father: {fileID: 1833308118535588177}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -111.5, y: -22.6}
-  m_SizeDelta: {x: 160, y: 30}
+  m_AnchorMin: {x: 0.07564139, y: 0.36174157}
+  m_AnchorMax: {x: 0.4355405, y: 0.46773973}
+  m_AnchoredPosition: {x: -0.7197876, y: -0.06011963}
+  m_SizeDelta: {x: -2.9437253, y: 1.9531028}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &1833308118180439419
 CanvasRenderer:
@@ -282,7 +282,7 @@ GameObject:
   - component: {fileID: 1833308118191504462}
   - component: {fileID: 1833308118191504457}
   m_Layer: 5
-  m_Name: Button (2)
+  m_Name: MainMenuButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -304,10 +304,10 @@ RectTransform:
   m_Father: {fileID: 1833308118535588177}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 96.1, y: -22.6}
-  m_SizeDelta: {x: 160, y: 30}
+  m_AnchorMin: {x: 0.5335727, y: 0.36174157}
+  m_AnchorMax: {x: 0.8867573, y: 0.46773973}
+  m_AnchoredPosition: {x: 0.80883026, y: -0.024288177}
+  m_SizeDelta: {x: -0.035432935, y: 1.9047465}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &1833308118191504463
 CanvasRenderer:
@@ -424,10 +424,10 @@ RectTransform:
   m_Father: {fileID: 1833308118535588177}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 58.7}
-  m_SizeDelta: {x: 200, y: 50}
+  m_AnchorMin: {x: 0.16226758, y: 0.5482931}
+  m_AnchorMax: {x: 0.8377324, y: 0.895126}
+  m_AnchoredPosition: {x: -0.0048828125, y: 0.23326111}
+  m_SizeDelta: {x: 0.6346935, y: 2.5316496}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &1833308118469831006
 CanvasRenderer:
@@ -457,7 +457,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Congrats
+  m_text: Congratulations! You finished the level!
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: f15bcb4fbb031f742977dc798bddbd98, type: 2}
   m_sharedMaterial: {fileID: 1874236024296348284, guid: f15bcb4fbb031f742977dc798bddbd98, type: 2}
@@ -484,8 +484,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 36
-  m_fontSizeBase: 36
+  m_fontSize: 24
+  m_fontSizeBase: 24
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -671,7 +671,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Button
+  m_text: Next level
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: f15bcb4fbb031f742977dc798bddbd98, type: 2}
   m_sharedMaterial: {fileID: 1874236024296348284, guid: f15bcb4fbb031f742977dc798bddbd98, type: 2}

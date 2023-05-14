@@ -33,6 +33,12 @@ public class LevelManager : MonoBehaviour
             item.GetComponent<Outline>().enabled = false;
         }
     }
+
+    public void LoadNextLevel()
+    {
+        GameManager.Instance.LoadGameLevel(true);
+    }
+
     private void OnEndLevelHandler(PlayerController controller)
     {
         OnEndLevel.Invoke();
