@@ -15,8 +15,8 @@ public class LevelManager : MonoBehaviour
     private void Awake()
     {
         instance = this;
-
-        endGoalTrigger.OnPlayerTrigger += (PlayerController playerController) => OnEndLevel.Invoke();
+        Cursor.lockState = CursorLockMode.Locked;
+        endGoalTrigger.OnPlayerTrigger += OnEndLevelHandler;
     }
 
     public void RespawnPlayer()
@@ -25,8 +25,9 @@ public class LevelManager : MonoBehaviour
         player.GetRigidbody().rotation = Quaternion.Euler(Vector3.zero);
         player.GetRigidbody().velocity = Vector3.zero;
     }
-    //private void EndLevel()
-    //{
-    //    GameManager.Instance.LoadGameLevel(true);
-    //}
+    private void OnEndLevelHandler(PlayerController controller)
+    {
+        OnEndLevel.Invoke();
+        Cursor.lockState = CursorLockMode.None;
+    }
 }
