@@ -10,7 +10,7 @@ public class LevelManager : MonoBehaviour
 
     private void Awake()
     {
-        endGoalTrigger.OnPlayerTrigger += () => OnEndLevel.Invoke();
+        endGoalTrigger.OnPlayerTrigger += (PlayerController playerController) => OnEndLevel.Invoke();
     }
 
     //private void EndLevel()

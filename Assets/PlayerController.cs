@@ -205,6 +205,11 @@ public class PlayerController : MonoBehaviour
         return closest;
     }
 
+    public void AddSpeed(Vector3 direction, float speedBoost)
+    {
+        rb.AddForce(direction * speedBoost, ForceMode.Impulse);
+    }
+
     private void OnCollisionEnter(Collision other)
     {
         if (other.gameObject.tag == "Enemy")

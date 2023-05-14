@@ -4,15 +4,16 @@ using UnityEngine;
 
 public class SpeedTrigger : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    [SerializeField] private PlayerTriggerDetector playerTrigger;
+    [SerializeField] private float speedBoost;
+
+    private void Awake()
     {
-        
+        playerTrigger.OnPlayerTrigger += GivePlayerBoost;
     }
 
-    // Update is called once per frame
-    void Update()
+    private void GivePlayerBoost(PlayerController controller)
     {
-        
+        controller.AddSpeed(transform.forward,speedBoost);
     }
 }

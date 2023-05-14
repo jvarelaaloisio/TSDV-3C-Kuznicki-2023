@@ -5,13 +5,14 @@ using UnityEngine;
 
 public class PlayerTriggerDetector : MonoBehaviour
 {
-    public Action OnPlayerTrigger;
-    public Action OnPlayerTriggerExit;
+    public Action<PlayerController> OnPlayerTrigger;
+    public Action<PlayerController> OnPlayerTriggerExit;
+
     private void OnTriggerEnter(Collider other)
     {
         if(other.GetComponent<PlayerController>())
         {
-            OnPlayerTrigger?.Invoke();
+            OnPlayerTrigger?.Invoke(other.GetComponent<PlayerController>());
         }
 
     }
@@ -20,7 +21,7 @@ public class PlayerTriggerDetector : MonoBehaviour
     {
         if(other.GetComponent<PlayerController>())
         {
-            OnPlayerTriggerExit?.Invoke();
+            OnPlayerTriggerExit?.Invoke(other.GetComponent<PlayerController>());
         }
     }
 }
