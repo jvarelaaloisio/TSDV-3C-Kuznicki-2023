@@ -31,6 +31,21 @@ public class PlayerController : MonoBehaviour
     private void Update()
     {
         CheckGrounded();
+
+        List<Transform> enemies = new List<Transform>();
+        foreach (Collider coll in Physics.OverlapSphere(launchAttackPoint.position, settings.launchAttackDetectRadius))
+        {
+            if (coll.tag == "Enemy")
+            {
+                enemies.Add(coll.transform);
+            }
+        }
+
+        if (enemies.Count > 0)
+        {
+            attackTarget = GetClosest(enemies);
+            attackTarget.gameObject.GetComponent<Outline>().enabled = true;
+        }
     }
 
     private void CheckGrounded()
@@ -162,7 +177,6 @@ public class PlayerController : MonoBehaviour
 
     private void OnAttack(InputValue inputValue)
     {
-        Debug.Log(rb.velocity);
         List<Transform> enemies = new List<Transform>();
         foreach (Collider coll in Physics.OverlapSphere(launchAttackPoint.position, settings.launchAttackDetectRadius))
         {
@@ -175,7 +189,7 @@ public class PlayerController : MonoBehaviour
         if (enemies.Count > 0)
         {
             attackTarget = GetClosest(enemies);
-
+            attackTarget.gameObject.GetComponent<Outline>().enabled = true;
             LaunchAttack();
         }
     }
