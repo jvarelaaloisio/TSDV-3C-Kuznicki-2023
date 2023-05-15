@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 7097765225136567586}
   - component: {fileID: 5810562655454416987}
   m_Layer: 0
-  m_Name: Capsule
+  m_Name: Enemy
   m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -113,7 +113,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   outlineMode: 1
   outlineColor: {r: 1, g: 1, b: 1, a: 1}
-  outlineWidth: 3
+  outlineWidth: 9
   precomputeOutline: 1
   bakeKeys:
   - {fileID: 10208, guid: 0000000000000000e000000000000000, type: 0}
