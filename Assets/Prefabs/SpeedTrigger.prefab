@@ -61,6 +61,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2e35ac02482857e4d98ce81b032e98d9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  OnPlayerTriggerEvent:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!114 &5648421710985104173
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -74,7 +77,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerTrigger: {fileID: 5648421710985104211}
-  speedBoost: 100
+  speedBoost: 450
 --- !u!33 &5648421710985104175
 MeshFilter:
   m_ObjectHideFlags: 0

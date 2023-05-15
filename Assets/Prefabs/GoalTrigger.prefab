@@ -4824,7 +4824,7 @@ GameObject:
   - component: {fileID: 2272954211086056841}
   - component: {fileID: 641245981295568700}
   m_Layer: 0
-  m_Name: PlayerTrigger
+  m_Name: GoalTrigger
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4858,6 +4858,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2e35ac02482857e4d98ce81b032e98d9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  OnPlayerTriggerEvent:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!65 &641245981295568700
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -4869,5 +4872,5 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 4.1259885, y: 3.0871227, z: 1.8998488}
+  m_Size: {x: 8.027475, y: 3.0871227, z: 6.360883}
   m_Center: {x: 0, y: 0, z: -0.06958383}
