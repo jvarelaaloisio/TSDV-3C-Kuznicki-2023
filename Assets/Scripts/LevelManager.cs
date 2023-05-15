@@ -39,6 +39,10 @@ public class LevelManager : MonoBehaviour
         GameManager.Instance.LoadGameLevel(true);
     }
 
+    public void LoadMainMenu()
+    {
+        GameManager.Instance.LoadMenu();
+    }
     private void OnEndLevelHandler(PlayerController controller)
     {
         OnEndLevel.Invoke();
