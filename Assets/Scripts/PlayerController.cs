@@ -239,8 +239,14 @@ public class PlayerController : MonoBehaviour
         if (other.gameObject.tag == "Enemy")
         {
             rb.useGravity = true;
+            rb.velocity = Vector3.zero;
+            rb.angularVelocity = Vector3.zero;
+            rb.rotation = Quaternion.Euler(Vector3.zero);
+
             other.gameObject.GetComponent<Outline>().enabled = false;
             other.gameObject.SetActive(false);
+
+            rb.AddForce(Vector3.up * 200, ForceMode.Impulse);
         }
     }
 
