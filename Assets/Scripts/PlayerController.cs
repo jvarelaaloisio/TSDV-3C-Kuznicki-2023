@@ -229,6 +229,11 @@ public class PlayerController : MonoBehaviour
         rb.AddForce(direction * speedBoost, ForceMode.Impulse);
     }
 
+    public void Damage()
+    {
+
+    }
+
     private void OnCollisionEnter(Collision other)
     {
         if (other.gameObject.tag == "Enemy")
