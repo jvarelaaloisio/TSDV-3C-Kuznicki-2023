@@ -11,7 +11,7 @@ public class LevelManager : MonoBehaviour
     [SerializeField] private UnityEvent OnEndLevel;
     [SerializeField] private PlayerController player;
     [SerializeField] private Transform startingPoint;
-
+    [SerializeField] private Cinemachine.CinemachineFreeLook camera;
     [SerializeField] private GameObject[] respawneableObjects;
 
     private void Awake()
@@ -19,6 +19,27 @@ public class LevelManager : MonoBehaviour
         instance = this;
         Cursor.lockState = CursorLockMode.Locked;
         endGoalTrigger.OnPlayerTrigger += OnEndLevelHandler;
+
+        SetCameraValues();
+    }
+
+    private void SetCameraValues()
+    {
+        string controlScheme = PlayerPrefs.GetString("ControlScheme", " ");
+
+        if (controlScheme == null)
+            return;
+
+        if(controlScheme == "Keyboard")
+        {
+            camera.m_YAxis.m_MaxSpeed = 0.01f;
+            camera.m_XAxis.m_MaxSpeed = 0.2f;
+        }
+        else
+        {
+            camera.m_YAxis.m_MaxSpeed = 0.1f;
+            camera.m_XAxis.m_MaxSpeed = 3f;
+        }
     }
 
     public void RespawnPlayer()

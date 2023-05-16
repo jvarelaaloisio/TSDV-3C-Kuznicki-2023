@@ -1032,6 +1032,7 @@ MonoBehaviour:
         m_CallState: 2
   player: {fileID: 1157894375}
   startingPoint: {fileID: 484598218}
+  camera: {fileID: 681130164}
   respawneableObjects:
   - {fileID: 360628862}
   - {fileID: 133817033}
