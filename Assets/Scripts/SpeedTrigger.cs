@@ -14,6 +14,6 @@ public class SpeedTrigger : MonoBehaviour
 
     private void GivePlayerBoost(PlayerController controller)
     {
-        controller.AddSpeed(transform.forward,speedBoost);
+        controller.GetPlayerModel().AddSpeed(transform.forward,speedBoost);
     }
 }
