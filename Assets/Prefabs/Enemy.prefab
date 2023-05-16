@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 7097765225136567584}
   - component: {fileID: 7097765225136567587}
   - component: {fileID: 5810562655454416987}
-  - component: {fileID: 1475262441335752331}
+  - component: {fileID: 1731423162072438775}
   m_Layer: 0
   m_Name: Enemy
   m_TagString: Enemy
@@ -655,8 +655,8 @@ MonoBehaviour:
     - {x: 0.7063923, y: 0.04494747, z: 0.706392}
     - {x: 0.34110048, y: 0.6646991, z: 0.6646996}
     - {x: 0.17692533, y: 0.69595146, z: 0.6959518}
---- !u!135 &1475262441335752331
-SphereCollider:
+--- !u!64 &1731423162072438775
+MeshCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -665,6 +665,7 @@ SphereCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  serializedVersion: 2
-  m_Radius: 1.3003569
-  m_Center: {x: 0, y: 1.2966865, z: 0}
+  serializedVersion: 4
+  m_Convex: 1
+  m_CookingOptions: 30
+  m_Mesh: {fileID: -4258985910291648141, guid: a9e884a69aaa3844b93ecdb284717c66, type: 3}
