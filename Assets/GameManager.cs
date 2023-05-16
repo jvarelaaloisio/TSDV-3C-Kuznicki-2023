@@ -10,7 +10,7 @@ public class GameManager : MonoBehaviourSingleton<GameManager>
 
     public void LoadLevel()
     {
-        SceneManager.LoadScene(level1BuildIndex, LoadSceneMode.Single);
+        SceneManager.LoadScene(1);
         //UnloadLevel();
     }
 
@@ -27,7 +27,7 @@ public class GameManager : MonoBehaviourSingleton<GameManager>
 
     public void LoadGameLevel(bool LoadNext)
     {
-        Debug.Log(LoadNext);
+        Scene previousScene = SceneManager.GetActiveScene();
         if (LoadNext)
             SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
         else

@@ -5,5 +5,8 @@ using UnityEngine.SceneManagement;
 
 public class LevelLoader : MonoBehaviour
 {
-    
+    public void LoadNextLevel()
+    {
+        GameManager.Instance.LoadGameLevel(true);
+    }
 }
