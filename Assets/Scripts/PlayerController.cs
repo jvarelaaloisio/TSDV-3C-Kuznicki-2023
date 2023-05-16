@@ -18,6 +18,7 @@ public class PlayerController : MonoBehaviour
     private bool initCoyoteTimer = false;
     private bool isGrounded;
     private bool isJumping;
+    private bool isAttacking;
 
     private int jumpCount = 1;
 
@@ -124,6 +125,9 @@ public class PlayerController : MonoBehaviour
 
     private void OnAttack(InputValue inputValue)
     {
+        if (isAttacking)
+            return;
+
         CheckNearbyEnemies();
 
         if (attackTarget != null)
@@ -165,6 +169,8 @@ public class PlayerController : MonoBehaviour
         if (other.gameObject.tag == "Enemy")
         {
             playerModel.Rebound(other);
+            attackTarget = null;
+            isAttacking = false;
         }
     }
 
