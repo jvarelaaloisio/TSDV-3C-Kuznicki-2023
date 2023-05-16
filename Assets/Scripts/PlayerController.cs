@@ -101,7 +101,7 @@ public class PlayerController : MonoBehaviour
         cameraRight.y = 0f;
         cameraRight = cameraRight.normalized;
 
-        return (cameraForward * input.y + cameraRight * input.x) * Time.fixedDeltaTime;
+        return (cameraForward * input.y + cameraRight * input.x) * Time.deltaTime;
     }
 
     private void OnMove(InputValue value)

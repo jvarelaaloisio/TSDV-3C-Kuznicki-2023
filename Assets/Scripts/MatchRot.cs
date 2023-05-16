@@ -11,7 +11,7 @@ public class MatchRot : MonoBehaviour
         rotationToMatch = Camera.main.transform;
     }
 
-    private void FixedUpdate()
+    private void Update()
     {
         transform.rotation = rotationToMatch.rotation;
     }

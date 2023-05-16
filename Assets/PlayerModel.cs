@@ -57,7 +57,7 @@ public class PlayerModel
             if (rb.velocity.y < 0.0f)
             {
                 //isJumping = false;
-                rb.velocity += Vector3.up * settings.fallingMultiplier * Physics.gravity.y * Time.fixedDeltaTime;
+                rb.velocity += Vector3.up * settings.fallingMultiplier * Physics.gravity.y * Time.deltaTime;
             }
             else if (rb.velocity.y > 0f && !IsGrounded())
                 rb.velocity += Vector3.up * Physics.gravity.y * (settings.lowJumpMultiplier - 1) * Time.deltaTime;
@@ -66,36 +66,10 @@ public class PlayerModel
         }
 
         if (IsJumping())
-            currentTimeJumping += Time.fixedDeltaTime;
+            currentTimeJumping += Time.deltaTime;
 
     }
 
-    private void CapVelocities()
-    {
-        if (Mathf.Abs(rb.velocity.z) > settings.maxHorVelocity)
-        {
-            if (rb.velocity.z < 0)
-                rb.velocity = new Vector3(rb.velocity.x, rb.velocity.y, -settings.maxHorVelocity);
-            else
-                rb.velocity = new Vector3(rb.velocity.x, rb.velocity.y, settings.maxHorVelocity);
-        }
-
-        if (Mathf.Abs(rb.velocity.x) > settings.maxHorVelocity)
-        {
-            if (rb.velocity.x < 0)
-                rb.velocity = new Vector3(-settings.maxHorVelocity, rb.velocity.y, rb.velocity.z);
-            else
-                rb.velocity = new Vector3(settings.maxHorVelocity, rb.velocity.y, rb.velocity.z);
-        }
-
-        if (Mathf.Abs(rb.velocity.y) > settings.maxVertVelocity)
-        {
-            if (rb.velocity.y < 0)
-                rb.velocity = new Vector3(rb.velocity.x, -settings.maxVertVelocity, rb.velocity.z);
-            else
-                rb.velocity = new Vector3(rb.velocity.x, settings.maxVertVelocity, rb.velocity.z);
-        }
-    }
     public Rigidbody GetRigidbody() => rb;
 
     public void LaunchAttack(Transform attackTarget)
