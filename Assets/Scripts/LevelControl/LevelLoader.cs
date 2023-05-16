@@ -9,4 +9,9 @@ public class LevelLoader : MonoBehaviour
     {
         GameManager.Instance.LoadGameLevel(true);
     }
+
+    public void EndGame()
+    {
+        Application.Quit();
+    }
 }
