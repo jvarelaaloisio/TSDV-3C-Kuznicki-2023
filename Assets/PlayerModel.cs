@@ -99,9 +99,11 @@ public class PlayerModel
         rb.angularVelocity = Vector3.zero;
         rb.rotation = Quaternion.Euler(Vector3.zero);
 
-        other.gameObject.GetComponent<Outline>().enabled = false;
-        other.gameObject.SetActive(false);
-
+        if(other != null)
+        {
+            other.gameObject.GetComponent<Outline>().enabled = false;
+            other.gameObject.SetActive(false);
+        }
         rb.AddForce(Vector3.up * 200, ForceMode.Impulse);
     }
 

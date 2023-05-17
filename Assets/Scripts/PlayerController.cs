@@ -172,6 +172,15 @@ public class PlayerController : MonoBehaviour
             attackTarget = null;
             isAttacking = false;
         }
+        else
+        {
+            if(isAttacking || attackTarget != null)
+            {
+                playerModel.Rebound(null);
+                isAttacking = false;
+                attackTarget = null;
+            }
+        }
     }
 
     private void OnDrawGizmos()
