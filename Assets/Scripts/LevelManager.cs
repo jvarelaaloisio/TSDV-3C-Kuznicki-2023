@@ -61,6 +61,7 @@ public class LevelManager : MonoBehaviour
 
     public void OnPause()
     {
+        Debug.LogError("what");
         isPaused = !isPaused;
 
         if (isPaused)

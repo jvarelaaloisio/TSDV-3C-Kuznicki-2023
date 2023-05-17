@@ -5,12 +5,13 @@ using UnityEngine.InputSystem;
 using UnityEngine.UI;
 using TMPro;
 
-enum MenuScreen { MainMenu, Options, Credits, PauseMenu}
+enum MenuScreen { MainMenu, Options, Credits, PauseMenu, EndMenu}
 public class MenuInput : MonoBehaviour
 {
     [SerializeField] Button[] mainMenuButtons;
     [SerializeField] Button[] optionsMenuButtons;
     [SerializeField] Button[] pauseMenuButtons;
+    [SerializeField] Button[] endMenuButtons;
     [SerializeField] Button backButtonCredits;
     [SerializeField] int index = 0;
 
@@ -81,9 +82,33 @@ public class MenuInput : MonoBehaviour
             case MenuScreen.Credits:
                 backButtonCredits.Select();
                 break;
+            case MenuScreen.EndMenu:
+                if (value.Get<float>() < 0)
+                {
+                    if (index > 0)
+                    {
+
+                        UnityEngine.EventSystems.EventSystem.current.SetSelectedGameObject(null);
+                        index--;
+                        endMenuButtons[index].Select();
+                    }
+                }
+                else if (index + value.Get<float>() < endMenuButtons.Length)
+                {
+                    index++;
+                    UnityEngine.EventSystems.EventSystem.current.SetSelectedGameObject(null);
+                    endMenuButtons[index].Select();
+                }
+                break;
             default:
                 break;
         }
+    }
+
+    public void SetToEndSCreen()
+    {
+        index = 0;
+        currentScreen = MenuScreen.EndMenu;
     }
 
     public void ToggleCredits()

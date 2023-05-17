@@ -63,7 +63,7 @@ namespace Inputs
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
                     ""interactions"": """",
-                    ""initialStateCheck"": false
+                    ""initialStateCheck"": true
                 }
             ],
             ""bindings"": [
@@ -202,7 +202,7 @@ namespace Inputs
                 {
                     ""name"": """",
                     ""id"": ""6bba88c9-f318-4145-94f3-be1bc8fc9a35"",
-                    ""path"": ""<Keyboard>/escape"",
+                    ""path"": ""<Keyboard>/p"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",

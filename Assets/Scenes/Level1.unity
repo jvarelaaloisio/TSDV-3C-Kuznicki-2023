@@ -981,6 +981,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4360059304789912545, guid: 7bef8dc88f51c684d8716e696ab73420, type: 3}
+      propertyPath: m_Actions
+      value: 
+      objectReference: {fileID: -944628639613478452, guid: 9938dd951c0c6834bba2b085cb3c66d8, type: 3}
+    - target: {fileID: 4360059304789912545, guid: 7bef8dc88f51c684d8716e696ab73420, type: 3}
+      propertyPath: m_DefaultActionMap
+      value: df3c7c0d-6ff3-43b1-90ca-3c70085a46e4
+      objectReference: {fileID: 0}
     - target: {fileID: 4360059304789912546, guid: 7bef8dc88f51c684d8716e696ab73420, type: 3}
       propertyPath: m_Name
       value: UIInputReciever
@@ -998,17 +1006,29 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1833308118419876275}
     - target: {fileID: 4360059304789912551, guid: 7bef8dc88f51c684d8716e696ab73420, type: 3}
+      propertyPath: endMenuButtons.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4360059304789912551, guid: 7bef8dc88f51c684d8716e696ab73420, type: 3}
       propertyPath: pauseMenuButtons.Array.size
       value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 4360059304789912551, guid: 7bef8dc88f51c684d8716e696ab73420, type: 3}
+      propertyPath: endMenuButtons.Array.data[0]
+      value: 
+      objectReference: {fileID: 1833308118419876276}
+    - target: {fileID: 4360059304789912551, guid: 7bef8dc88f51c684d8716e696ab73420, type: 3}
+      propertyPath: endMenuButtons.Array.data[1]
+      value: 
+      objectReference: {fileID: 1833308118419876275}
+    - target: {fileID: 4360059304789912551, guid: 7bef8dc88f51c684d8716e696ab73420, type: 3}
       propertyPath: pauseMenuButtons.Array.data[0]
       value: 
-      objectReference: {fileID: 164423058}
+      objectReference: {fileID: 164423059}
     - target: {fileID: 4360059304789912551, guid: 7bef8dc88f51c684d8716e696ab73420, type: 3}
       propertyPath: pauseMenuButtons.Array.data[1]
       value: 
-      objectReference: {fileID: 164423059}
+      objectReference: {fileID: 164423058}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7bef8dc88f51c684d8716e696ab73420, type: 3}
 --- !u!1001 &799160859
@@ -1243,6 +1263,18 @@ MonoBehaviour:
         m_TargetAssemblyTypeName: UnityEngine.Behaviour, UnityEngine
         m_MethodName: set_enabled
         m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1842418124}
+        m_TargetAssemblyTypeName: MenuInput, Assembly-CSharp
+        m_MethodName: SetToEndSCreen
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
