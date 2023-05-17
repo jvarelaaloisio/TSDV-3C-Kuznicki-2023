@@ -13,6 +13,10 @@ public class LevelManager : MonoBehaviour
     [SerializeField] private Transform startingPoint;
     [SerializeField] private Cinemachine.CinemachineFreeLook camera;
     [SerializeField] private GameObject[] respawneableObjects;
+    [SerializeField] private GameObject pauseMenu;
+    [SerializeField] private MenuInput menuInput;
+
+    private bool isPaused = false;
 
     private void Awake()
     {
@@ -30,7 +34,7 @@ public class LevelManager : MonoBehaviour
         if (controlScheme == null)
             return;
 
-        if(controlScheme == "Keyboard")
+        if (controlScheme == "Keyboard")
         {
             camera.m_YAxis.m_MaxSpeed = 0.01f;
             camera.m_XAxis.m_MaxSpeed = 0.2f;
@@ -55,6 +59,25 @@ public class LevelManager : MonoBehaviour
         }
     }
 
+    public void OnPause()
+    {
+        isPaused = !isPaused;
+
+        if (isPaused)
+        {
+            Time.timeScale = 0;
+            pauseMenu.SetActive(true);
+            menuInput.TogglePause();
+        }
+        else
+        {
+            Time.timeScale = 1;
+            pauseMenu.SetActive(false);
+            menuInput.TogglePause();
+        }
+    }
+
+
     public void LoadNextLevel()
     {
         GameManager.Instance.LoadGameLevel(true);
@@ -62,6 +85,7 @@ public class LevelManager : MonoBehaviour
 
     public void LoadMainMenu()
     {
+        Time.timeScale = 1;
         GameManager.Instance.LoadMenu();
     }
     private void OnEndLevelHandler(PlayerController controller)

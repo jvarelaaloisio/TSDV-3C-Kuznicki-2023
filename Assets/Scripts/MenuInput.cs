@@ -5,11 +5,12 @@ using UnityEngine.InputSystem;
 using UnityEngine.UI;
 using TMPro;
 
-enum MenuScreen { MainMenu, Options, Credits}
+enum MenuScreen { MainMenu, Options, Credits, PauseMenu}
 public class MenuInput : MonoBehaviour
 {
     [SerializeField] Button[] mainMenuButtons;
     [SerializeField] Button[] optionsMenuButtons;
+    [SerializeField] Button[] pauseMenuButtons;
     [SerializeField] Button backButtonCredits;
     [SerializeField] int index = 0;
 
@@ -17,6 +18,7 @@ public class MenuInput : MonoBehaviour
 
     private bool isInCredits = false;
     private bool isInOptions = false;
+    private bool isInPause = false;
     private bool usingGamepad = false;
 
     private void OnSelection(InputValue value)
@@ -58,6 +60,24 @@ public class MenuInput : MonoBehaviour
                     optionsMenuButtons[index].Select();
                 }
                 break;
+            case MenuScreen.PauseMenu:
+                if (value.Get<float>() < 0)
+                {
+                    if (index > 0)
+                    {
+
+                        UnityEngine.EventSystems.EventSystem.current.SetSelectedGameObject(null);
+                        index--;
+                        pauseMenuButtons[index].Select();
+                    }
+                }
+                else if (index + value.Get<float>() < pauseMenuButtons.Length)
+                {
+                    index++;
+                    UnityEngine.EventSystems.EventSystem.current.SetSelectedGameObject(null);
+                    pauseMenuButtons[index].Select();
+                }
+                break;
             case MenuScreen.Credits:
                 backButtonCredits.Select();
                 break;
@@ -83,6 +103,17 @@ public class MenuInput : MonoBehaviour
 
         if (isInOptions)
             currentScreen = MenuScreen.Options;
+        else
+            currentScreen = MenuScreen.MainMenu;
+    }
+
+    public void TogglePause()
+    {
+        index = 0;
+        isInPause = !isInPause;
+
+        if (isInPause)
+            currentScreen = MenuScreen.PauseMenu;
         else
             currentScreen = MenuScreen.MainMenu;
     }

@@ -55,6 +55,15 @@ namespace Inputs
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": true
+                },
+                {
+                    ""name"": ""Pause"",
+                    ""type"": ""Button"",
+                    ""id"": ""428c6700-bbd5-4214-b560-95a2badadeac"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -176,6 +185,28 @@ namespace Inputs
                     ""processors"": """",
                     ""groups"": """",
                     ""action"": ""Attack"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""d34d284b-1a0b-4170-8c4b-a23e69c283c8"",
+                    ""path"": ""<Gamepad>/start"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Pause"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""6bba88c9-f318-4145-94f3-be1bc8fc9a35"",
+                    ""path"": ""<Keyboard>/escape"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Pause"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -323,6 +354,7 @@ namespace Inputs
             m_World_Move = m_World.FindAction("Move", throwIfNotFound: true);
             m_World_Jump = m_World.FindAction("Jump", throwIfNotFound: true);
             m_World_Attack = m_World.FindAction("Attack", throwIfNotFound: true);
+            m_World_Pause = m_World.FindAction("Pause", throwIfNotFound: true);
             // Menu
             m_Menu = asset.FindActionMap("Menu", throwIfNotFound: true);
             m_Menu_Selection = m_Menu.FindAction("Selection", throwIfNotFound: true);
@@ -392,6 +424,7 @@ namespace Inputs
         private readonly InputAction m_World_Move;
         private readonly InputAction m_World_Jump;
         private readonly InputAction m_World_Attack;
+        private readonly InputAction m_World_Pause;
         public struct WorldActions
         {
             private @PlayerInputs m_Wrapper;
@@ -399,6 +432,7 @@ namespace Inputs
             public InputAction @Move => m_Wrapper.m_World_Move;
             public InputAction @Jump => m_Wrapper.m_World_Jump;
             public InputAction @Attack => m_Wrapper.m_World_Attack;
+            public InputAction @Pause => m_Wrapper.m_World_Pause;
             public InputActionMap Get() { return m_Wrapper.m_World; }
             public void Enable() { Get().Enable(); }
             public void Disable() { Get().Disable(); }
@@ -417,6 +451,9 @@ namespace Inputs
                 @Attack.started += instance.OnAttack;
                 @Attack.performed += instance.OnAttack;
                 @Attack.canceled += instance.OnAttack;
+                @Pause.started += instance.OnPause;
+                @Pause.performed += instance.OnPause;
+                @Pause.canceled += instance.OnPause;
             }
 
             private void UnregisterCallbacks(IWorldActions instance)
@@ -430,6 +467,9 @@ namespace Inputs
                 @Attack.started -= instance.OnAttack;
                 @Attack.performed -= instance.OnAttack;
                 @Attack.canceled -= instance.OnAttack;
+                @Pause.started -= instance.OnPause;
+                @Pause.performed -= instance.OnPause;
+                @Pause.canceled -= instance.OnPause;
             }
 
             public void RemoveCallbacks(IWorldActions instance)
@@ -514,6 +554,7 @@ namespace Inputs
             void OnMove(InputAction.CallbackContext context);
             void OnJump(InputAction.CallbackContext context);
             void OnAttack(InputAction.CallbackContext context);
+            void OnPause(InputAction.CallbackContext context);
         }
         public interface IMenuActions
         {
