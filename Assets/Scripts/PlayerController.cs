@@ -174,7 +174,7 @@ public class PlayerController : MonoBehaviour
         }
         else
         {
-            if(isAttacking || attackTarget != null)
+            if(isAttacking)
             {
                 playerModel.Rebound(null);
                 isAttacking = false;
