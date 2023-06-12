@@ -74,11 +74,15 @@ public class PlayerController : MonoBehaviour
     private void CheckNearbyEnemies()
     {
         List<Transform> enemies = new List<Transform>();
-        foreach (Collider coll in Physics.OverlapSphere(launchAttackPoint.position, settings.launchAttackDetectRadius))
+        foreach (Collider coll in Physics.OverlapSphere(launchAttackPoint.position, settings.ExternLaunchAttackDetectRadius))
         {
             if (coll.tag == "Enemy")
             {
-                enemies.Add(coll.transform);
+
+                if (Vector3.Distance(coll.transform.position, launchAttackPoint.position) <= settings.launchAttackDetectRadius)
+                    enemies.Add(coll.transform);
+                else
+                    coll.GetComponent<Outline>().enabled = false;
             }
         }
 
@@ -87,9 +91,11 @@ public class PlayerController : MonoBehaviour
             attackTarget = GetClosest(enemies);
             attackTarget.gameObject.GetComponent<Outline>().enabled = true;
         }
+        else
+            attackTarget = null;
     }
 
-    
+
 
     private Vector3 GetRelativeMovement()
     {
@@ -174,7 +180,7 @@ public class PlayerController : MonoBehaviour
         }
         else
         {
-            if(isAttacking)
+            if (isAttacking)
             {
                 playerModel.Rebound(null);
                 isAttacking = false;
