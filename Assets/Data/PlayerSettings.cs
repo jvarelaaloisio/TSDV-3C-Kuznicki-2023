@@ -17,6 +17,7 @@ public class PlayerSettings : ScriptableObject
 
     [Header("AttackSettings")]
     public float launchAttackDetectRadius;
+    public float ExternLaunchAttackDetectRadius;
     public float launchAttackForce = 200.0f;
 
 }
