@@ -13,6 +13,6 @@ public class SpikeTrigger : MonoBehaviour
 
     private void DamagePlayer(PlayerController controller)
     {
-        controller.Damage();
+        controller.GetComponent<IAttackable>()?.RecieveAttack();
     }
 }

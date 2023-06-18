@@ -158,11 +158,6 @@ public class PlayerController : MonoBehaviour
         return closest;
     }
 
-    public void Damage()
-    {
-
-    }
-
     public PlayerModel GetPlayerModel() => playerModel;
 
 
