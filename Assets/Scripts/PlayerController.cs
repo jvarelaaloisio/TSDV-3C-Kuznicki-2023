@@ -76,7 +76,7 @@ public class PlayerController : MonoBehaviour
         List<Transform> enemies = new List<Transform>();
         foreach (Collider coll in Physics.OverlapSphere(launchAttackPoint.position, settings.ExternLaunchAttackDetectRadius))
         {
-            if (coll.tag == "Enemy")
+            if (coll.GetComponent<IAttackable>() != null)
             {
 
                 if (Vector3.Distance(coll.transform.position, launchAttackPoint.position) <= settings.launchAttackDetectRadius)
