@@ -107,6 +107,7 @@ GameObject:
   - component: {fileID: 7097765225136567587}
   - component: {fileID: 5810562655454416987}
   - component: {fileID: 1731423162072438775}
+  - component: {fileID: 8386680514799477936}
   m_Layer: 0
   m_Name: Enemy
   m_TagString: Enemy
@@ -764,3 +765,17 @@ MeshCollider:
   m_Convex: 1
   m_CookingOptions: 30
   m_Mesh: {fileID: -4258985910291648141, guid: a9e884a69aaa3844b93ecdb284717c66, type: 3}
+--- !u!114 &8386680514799477936
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7097765225136567597}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 95adb0690b6bdb444835808818a4242c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  deathParticles: {fileID: 0}
+  outline: {fileID: 5810562655454416987}

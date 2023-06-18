@@ -79,17 +79,18 @@ public class PlayerController : MonoBehaviour
             if (coll.GetComponent<IAttackable>() != null)
             {
 
+
                 if (Vector3.Distance(coll.transform.position, launchAttackPoint.position) <= settings.launchAttackDetectRadius)
                     enemies.Add(coll.transform);
                 else
-                    coll.GetComponent<Outline>().enabled = false;
+                    coll.GetComponent<ITargetable>()?.SetTargetted(false);
             }
         }
 
         if (enemies.Count > 0)
         {
             attackTarget = GetClosest(enemies);
-            attackTarget.gameObject.GetComponent<Outline>().enabled = true;
+            attackTarget.gameObject.GetComponent<ITargetable>()?.SetTargetted(true);
         }
         else
             attackTarget = null;
@@ -172,7 +173,7 @@ public class PlayerController : MonoBehaviour
 
     private void OnCollisionEnter(Collision other)
     {
-        if (other.gameObject.tag == "Enemy")
+        if (other.gameObject.GetComponent<IAttackable>() != null)
         {
             playerModel.Rebound(other);
             attackTarget = null;
