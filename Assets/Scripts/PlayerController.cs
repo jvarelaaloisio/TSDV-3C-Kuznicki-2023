@@ -24,7 +24,7 @@ public class PlayerController : MonoBehaviour
 
     private float coyoteCurrentTime;
 
-    void Awake()
+    private void Awake()
     {
         rb = GetComponent<Rigidbody>();
 
