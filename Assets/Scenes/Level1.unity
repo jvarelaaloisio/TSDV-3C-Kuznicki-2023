@@ -993,6 +993,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: UIInputReciever
       objectReference: {fileID: 0}
+    - target: {fileID: 4360059304789912546, guid: 7bef8dc88f51c684d8716e696ab73420, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4360059304789912551, guid: 7bef8dc88f51c684d8716e696ab73420, type: 3}
       propertyPath: allButtons.Array.size
       value: 2

@@ -106,5 +106,4 @@ public class PlayerModel
         }
         rb.AddForce(Vector3.up * 200, ForceMode.Impulse);
     }
-
 }

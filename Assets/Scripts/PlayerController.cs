@@ -40,14 +40,14 @@ public class PlayerController : MonoBehaviour
 
     private void FixedUpdate()
     {
-        GetPlayerModel().MyFixedUpdate();
+        playerModel.MyFixedUpdate();
     }
 
     private void CheckGrounded()
     {
         RaycastHit hit;
         Vector3 originOffset = transform.position + new Vector3(0, -GetComponent<SphereCollider>().radius, 0);
-
+ 
         if (Physics.Raycast(transform.position, -Vector3.up, out hit, 0.8f))
         {
             isGrounded = true;

@@ -194,12 +194,12 @@
             "actions": [
                 {
                     "name": "Selection",
-                    "type": "Button",
+                    "type": "Value",
                     "id": "c6f21b5b-159c-4779-85a0-b559b4a4f3bc",
-                    "expectedControlType": "Button",
+                    "expectedControlType": "Vector2",
                     "processors": "",
                     "interactions": "",
-                    "initialStateCheck": false
+                    "initialStateCheck": true
                 },
                 {
                     "name": "Enter",
@@ -257,7 +257,7 @@
                 {
                     "name": "WS",
                     "id": "71bb926d-c70f-4e60-9e3d-bc83a3c6dcd1",
-                    "path": "1DAxis",
+                    "path": "2DVector",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
@@ -266,7 +266,7 @@
                     "isPartOfComposite": false
                 },
                 {
-                    "name": "negative",
+                    "name": "Up",
                     "id": "4fe83200-3e5e-4e1c-8a55-7e9e0ec1ad59",
                     "path": "<Keyboard>/s",
                     "interactions": "",
@@ -277,9 +277,31 @@
                     "isPartOfComposite": true
                 },
                 {
-                    "name": "positive",
+                    "name": "Down",
                     "id": "af8f6c1a-094f-4bf5-bd71-fefc24863c21",
                     "path": "<Keyboard>/w",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Selection",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "Left",
+                    "id": "107c6849-4ced-46c5-9b74-fc389dd2b1f6",
+                    "path": "<Keyboard>/a",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Selection",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "Right",
+                    "id": "f4de8c6c-6431-468e-9262-90667cb4546e",
+                    "path": "<Keyboard>/d",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
