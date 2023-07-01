@@ -12,6 +12,7 @@ public class SpeedTrigger : MonoBehaviour
         playerTrigger.OnPlayerTrigger += GivePlayerBoost;
     }
 
+    //TODO: Fix - It would be better to just have an OnTriggerEnter in this component, the event will be triggered anyways
     private void GivePlayerBoost(PlayerController controller)
     {
         controller.GetPlayerModel().AddSpeed(transform.forward,speedBoost);

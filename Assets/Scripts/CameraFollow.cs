@@ -11,8 +11,10 @@ public class CameraFollow : MonoBehaviour
     [SerializeField] private float damping;
 
     private Vector2 mouseInput;
+    //TODO: TP2 - Remove unused methods/variables/classes
     //private Camera camera;
     // Start is called before the first frame update
+    //TODO: TP2 - Syntax - Consistency in access modifiers (private/protected/public/etc)
     void Start()
     {
         Cursor.lockState = CursorLockMode.Locked;
@@ -22,9 +24,11 @@ public class CameraFollow : MonoBehaviour
         transform.position = Vector3.Lerp(transform.position, newPos,damping);
     }
 
+    //TODO: TP2 - Syntax - Consistency in access modifiers (private/protected/public/etc)
     // Update is called once per frame
     void FixedUpdate()
     {
+        //TODO: TP2 - Remove unused methods/variables/classes
         //Vector3 newPos = target.position - horDistance * target.forward.normalized;
         //newPos.y = target.position.y + yDistance;
         //transform.position = Vector3.Lerp(transform.position, newPos,damping);
@@ -37,8 +41,10 @@ public class CameraFollow : MonoBehaviour
         //transform.RotateAround(target.position, new Vector3(mouseInput.x,0,mouseInput.y),0);
     }
     
+    //TODO: Fix - Using Input related logic outside of an input responsible class
     public void OnCamera(InputValue value)
     {
+        //TODO: TP2 - Remove unused methods/variables/classes
         //Debug.LogError(value.Get<Vector2>());
         mouseInput = value.Get<Vector2>();
     }

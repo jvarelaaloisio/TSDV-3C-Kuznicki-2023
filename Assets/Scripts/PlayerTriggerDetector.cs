@@ -13,8 +13,10 @@ public class PlayerTriggerDetector : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
+        //TODO: Fix - TryGetComponent
         if(other.GetComponent<PlayerController>())
         {
+            //TODO: Fix - Could subscribe the unityEvent to the action in the OnValidate or in the Awake method
             OnPlayerTriggerEvent.Invoke();
             OnPlayerTrigger?.Invoke(other.GetComponent<PlayerController>());
         }
@@ -23,6 +25,7 @@ public class PlayerTriggerDetector : MonoBehaviour
 
     private void OnTriggerExit(Collider other)
     {
+        //TODO: Fix - TryGetComponent
         if(other.GetComponent<PlayerController>())
         {
             OnPlayerTriggerExit?.Invoke(other.GetComponent<PlayerController>());

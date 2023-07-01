@@ -5,6 +5,7 @@ using UnityEngine;
 
 namespace kuznickiEventChannel
 {
+    //TODO: Documentation - Add summary
     public abstract class EventChannelSO<T> : ScriptableObject
     {
         private Action<T> myAction;

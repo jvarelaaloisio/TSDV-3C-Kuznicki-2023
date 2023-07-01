@@ -5,8 +5,10 @@ using UnityEngine.InputSystem;
 
 public class PlayerController : MonoBehaviour
 {
+    //TODO: TP2 - Remove unused methods/variables/classes
     //[SerializeField] private Transform camera;
     [SerializeField] private Transform launchAttackPoint;
+    //TODO: TP2 - Remove unused methods/variables/classes
     [SerializeField] private Transform cameraPoint;
     [SerializeField] private PlayerSettings settings;
     [SerializeField] private PlayerModel playerModel;
@@ -43,9 +45,11 @@ public class PlayerController : MonoBehaviour
         playerModel.MyFixedUpdate();
     }
 
+    //TODO: TP2 - SOLID This could be it's own component. But it's not obligatory :)
     private void CheckGrounded()
     {
         RaycastHit hit;
+        //TODO: TP2 - Remove unused methods/variables/classes
         Vector3 originOffset = transform.position + new Vector3(0, -GetComponent<SphereCollider>().radius, 0);
  
         if (Physics.Raycast(transform.position, -Vector3.up, out hit, 0.8f))
@@ -71,6 +75,7 @@ public class PlayerController : MonoBehaviour
 
     }
 
+    //TODO: Fix - Why is this called in Update?
     private void CheckNearbyEnemies()
     {
         List<Transform> enemies = new List<Transform>();
@@ -100,6 +105,8 @@ public class PlayerController : MonoBehaviour
 
     private Vector3 GetRelativeMovement()
     {
+        //TODO: Fix - Cache value/s
+        //TODO: Fix - Camera.main.transform.TransformDirection()
         Vector3 cameraForward = Camera.main.transform.forward;
         cameraForward.y = 0f;
         cameraForward = cameraForward.normalized;
@@ -113,6 +120,7 @@ public class PlayerController : MonoBehaviour
 
     private void OnMove(InputValue value)
     {
+        //TODO: Fix - Unclear name
         input = value.Get<Vector2>();
     }
 
@@ -132,6 +140,7 @@ public class PlayerController : MonoBehaviour
 
     private void OnAttack(InputValue inputValue)
     {
+        //TODO: TP2 - FSM
         if (isAttacking)
             return;
 
@@ -158,9 +167,11 @@ public class PlayerController : MonoBehaviour
         return closest;
     }
 
+    //TODO: Fix - Should be native Setter/Getter
     public PlayerModel GetPlayerModel() => playerModel;
 
 
+    //TODO: TP2 - Syntax - Fix declaration order
     public bool IsJumping() => isJumping;
     public bool IsGrounded() => isGrounded;
 
@@ -168,12 +179,14 @@ public class PlayerController : MonoBehaviour
 
     private void OnCollisionEnter(Collision other)
     {
+        //TODO: Fix - TryGetComponent()
         if (other.gameObject.GetComponent<IAttackable>() != null)
         {
             playerModel.Rebound(other);
             attackTarget = null;
             isAttacking = false;
         }
+        //TODO: Fix - else if(){}, not else{ if(){} }
         else
         {
             if (isAttacking)

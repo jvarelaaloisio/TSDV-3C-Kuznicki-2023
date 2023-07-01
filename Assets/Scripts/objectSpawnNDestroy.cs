@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+//TODO: Fix - Code is in Spanish or is trash code
 public class objectSpawnNDestroy : MonoBehaviour
 {
     private GameObject _newChild;
