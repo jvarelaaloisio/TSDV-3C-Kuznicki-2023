@@ -6,8 +6,6 @@ using UnityEngine.Events;
 public class LevelManager : MonoBehaviour
 {
     //TODO: TP2 - Remove unused methods/variables/classes
-    //TODO: Fix - This is a Singleton but doesn't inherit from MonobehaviourSingleton
-    public static LevelManager instance;
 
     [SerializeField] private PlayerTriggerDetector endGoalTrigger;
     [SerializeField] private UnityEvent OnEndLevel;
@@ -22,8 +20,7 @@ public class LevelManager : MonoBehaviour
 
     private void Awake()
     {
-        //BUG: Possible multiple instances
-        instance = this;
+
         Cursor.lockState = CursorLockMode.Locked;
         endGoalTrigger.OnPlayerTrigger += OnEndLevelHandler;
 
@@ -67,9 +64,8 @@ public class LevelManager : MonoBehaviour
 
     public void OnPause()
     {
-        //TODO: Fix - Bad log/Log out of context
-        Debug.LogError("what");
         isPaused = !isPaused;
+        Debug.Log("OnPause: " + isPaused);
 
         if (isPaused)
         {
