@@ -20,6 +20,7 @@ public class PlayerModel
         set => currentTimeJumping = value;
     }
 
+    //TODO: Fix - We talked about this in class, but we can revisit it on call if you need :)
     public PlayerModel(Rigidbody rb, Func<Vector3> GetRelativeMovement, Func<bool> IsJumping, Func<bool> IsGrounded, PlayerSettings settings)
     {
         this.rb = rb;
@@ -52,6 +53,7 @@ public class PlayerModel
         if (rb.useGravity)
         {
             rb.AddForce(new Vector3(forceAdded.x * settings.speed, 0.0f, forceAdded.z * settings.speed), ForceMode.VelocityChange);
+            //TODO: TP2 - Remove unused methods/variables/classes
             //rb.velocity = rb.velocity + new Vector3(forceAdded.x * settings.speed, 0.0f, forceAdded.z * settings.speed);
 
             if (rb.velocity.y < 0.0f)
@@ -62,6 +64,7 @@ public class PlayerModel
             else if (rb.velocity.y > 0f && !IsGrounded())
                 rb.velocity += Vector3.up * Physics.gravity.y * (settings.lowJumpMultiplier - 1) * Time.deltaTime;
 
+            //TODO: TP2 - Remove unused methods/variables/classes
             //CapVelocities();
         }
 

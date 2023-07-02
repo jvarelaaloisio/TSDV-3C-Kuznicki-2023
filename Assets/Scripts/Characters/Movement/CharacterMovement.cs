@@ -28,6 +28,7 @@ public class CharacterMovement : MonoBehaviour
     private Coroutine _jumpCoroutine;
 
     private bool _isJumpInput;
+    //TODO: TP2 - Syntax - Fix declaration order
     [SerializeField] private float coyoteTime;
 
     private void OnValidate()
@@ -39,6 +40,7 @@ public class CharacterMovement : MonoBehaviour
     {
         if (!rigidBody)
         {
+            //TODO: Fix - Code is in Spanish
             //<color=xxx> nos permite colorear una string
             //mas data sobre las string con $ (string interpolation):
             //https://learn.microsoft.com/es-es/dotnet/csharp/language-reference/tokens/interpolated
@@ -63,6 +65,7 @@ public class CharacterMovement : MonoBehaviour
     /// </summary>
     public void OnMove(InputValue context)
     {
+        //TODO: Fix - Using Input related logic outside of an input responsible class
         var movementInput = context.Get<Vector2>();
         _currentMovement = new Vector3(movementInput.x, 0, movementInput.y);
     }
@@ -126,6 +129,7 @@ public class CharacterMovement : MonoBehaviour
                 yield break;
             }
 
+            //TODO: TP2 - Remove unused methods/variables/classes
             // timeElapsed += Time.fixedDeltaTime;
         }
     }

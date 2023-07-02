@@ -7,6 +7,7 @@ public class Jewel : MonoBehaviour, IAttackable, ITargetable
     [SerializeField] private ParticleSystem deathParticles;
     [SerializeField] private Outline outline;
 
+    //TODO: Fix - Unclear logic
     public void SetTargetted(bool value)
     {
         outline.enabled = value;

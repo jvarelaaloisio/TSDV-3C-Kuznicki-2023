@@ -5,6 +5,8 @@ using UnityEngine.InputSystem;
 using UnityEngine.UI;
 using TMPro;
 
+//TODO: TP2 - Syntax - Consistency in access modifiers (private/protected/public/etc)
+//TODO: TP2 - Strategy
 enum MenuScreen { MainMenu, Options, Credits, PauseMenu, EndMenu}
 public class MenuInput : MonoBehaviour
 {
@@ -24,9 +26,12 @@ public class MenuInput : MonoBehaviour
 
     private void OnSelection(InputValue value)
     {
+        //TODO: TP2 - FSM or Strategy
         switch (currentScreen)
         {
             case MenuScreen.MainMenu:
+                //TODO: Fix - Cache value/s
+                //TODO: Fix - Trash code
                 if (value.Get<float>() < 0)
                 {
                     if (index > 0)
@@ -149,7 +154,9 @@ public class MenuInput : MonoBehaviour
 
         if (usingGamepad)
         {
+            //TODO: Fix - Hardcoded value
             PlayerPrefs.SetString("ControlScheme", "Gamepad");
+            //TODO: TP2 - SOLID
             go.GetComponentInChildren<TextMeshProUGUI>().text = "Gamepad";
         }
         else
