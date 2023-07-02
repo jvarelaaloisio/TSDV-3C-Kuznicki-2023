@@ -88,7 +88,7 @@ public class LevelManager : MonoBehaviour
 
     public void LoadNextLevel()
     {
-        GameManager.Instance.LoadGameLevel(true);
+        //GameManager.Instance.LoadGameLevel(true);
     }
 
     public void LoadMainMenu()
