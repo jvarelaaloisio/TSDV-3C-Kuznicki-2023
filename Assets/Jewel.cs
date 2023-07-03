@@ -17,7 +17,7 @@ public class Jewel : MonoBehaviour, IAttackable, ITargetable
     {
         if (deathParticles != null)
             deathParticles.Play();
-        else
-            Destroy(this.gameObject);
+
+        gameObject.SetActive(false);
     }
 }
