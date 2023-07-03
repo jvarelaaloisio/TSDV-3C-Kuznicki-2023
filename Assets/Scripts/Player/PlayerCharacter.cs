@@ -7,8 +7,11 @@ public class PlayerCharacter : MonoBehaviour, ICharacter
     [SerializeField] private PlayerSettings playerSettings;
     [SerializeField] private Rigidbody rb;
 
+    private Transform attackTarget;
+
     private bool characterGrounded;
     private bool characterJumping;
+    private bool characterAttacking;
 
     private int jumpCount = 1;
 
@@ -111,8 +114,11 @@ public class PlayerCharacter : MonoBehaviour, ICharacter
     /// Launches player towards attackTarget
     /// </summary>
     /// <param name="attackTarget"></param>
-    public void LaunchAttack(Transform attackTarget)
+    public void LaunchAttack()
     {
+        if (characterAttacking || attackTarget == null)
+            return;
+
         rb.rotation = Quaternion.Euler(Vector3.zero);
         rb.velocity = Vector3.zero;
         rb.useGravity = false;
@@ -125,8 +131,16 @@ public class PlayerCharacter : MonoBehaviour, ICharacter
     /// Called on rebound from collision with enemy
     /// </summary>
     /// <param name="other"></param>
-    public void Rebound(Collision other)
+    public void CheckRebound(Collision other)
     {
+        if (other == null)
+        {
+            if (!characterAttacking)
+            {
+                return;
+            }
+        }
+
         rb.useGravity = true;
         rb.velocity = Vector3.zero;
         rb.angularVelocity = Vector3.zero;
@@ -138,6 +152,9 @@ public class PlayerCharacter : MonoBehaviour, ICharacter
             other.gameObject.GetComponentInParent<IAttackable>()?.ReceiveAttack();
         }
         rb.AddForce(Vector3.up * 200, ForceMode.Impulse);
+
+        attackTarget = null;
+        characterAttacking = false;
     }
 
     /// <summary>
@@ -175,5 +192,10 @@ public class PlayerCharacter : MonoBehaviour, ICharacter
     public Rigidbody GetRigidbody()
     {
         return rb;
+    }
+
+    public void SetAttackTarget(Transform newTarget)
+    {
+        attackTarget = newTarget;
     }
 }

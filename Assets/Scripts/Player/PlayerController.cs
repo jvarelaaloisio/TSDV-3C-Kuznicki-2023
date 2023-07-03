@@ -11,11 +11,7 @@ public class PlayerController : MonoBehaviour
 
     [SerializeField] private PlayerCharacter playerCharacter;
 
-    private Transform attackTarget;
-
     private Vector2 moveInput;
-
-    private bool isAttacking;
 
     public PlayerCharacter PlayerCharacter
     {
@@ -52,7 +48,7 @@ public class PlayerController : MonoBehaviour
 
     //TODO: Fix - Why is this called in Update?
     //because it needs to detect nearest enemy at all times
-    
+
     /// <summary>
     /// Casts sphere to detect nearby enemies and target them
     /// </summary>
@@ -73,11 +69,14 @@ public class PlayerController : MonoBehaviour
 
         if (enemies.Count > 0)
         {
-            attackTarget = GetClosest(enemies);
-            attackTarget.gameObject.GetComponentInParent<ITargetable>()?.SetTargettedState(true);
+            Transform newTarget = GetClosest(enemies);
+
+            newTarget.gameObject.GetComponentInParent<ITargetable>()?.SetTargettedState(true);
+
+            playerCharacter.SetAttackTarget(newTarget);
         }
         else
-            attackTarget = null;
+            playerCharacter.SetAttackTarget(null);
     }
 
     /// <summary>
@@ -104,14 +103,9 @@ public class PlayerController : MonoBehaviour
     /// <param name="inputValue"></param>
     private void OnAttack(InputValue inputValue)
     {
-        if (isAttacking)
-            return;
-
         CheckNearbyEnemies();
 
-        if (attackTarget != null)
-            playerCharacter.LaunchAttack(attackTarget);
-
+        playerCharacter.LaunchAttack();
     }
 
     /// <summary>
@@ -139,16 +133,13 @@ public class PlayerController : MonoBehaviour
         IAttackable attackable = other.gameObject.GetComponentInParent<IAttackable>();
         if (attackable != null)
         {
-            playerCharacter.Rebound(other);
-            attackTarget = null;
-            isAttacking = false;
+            playerCharacter.CheckRebound(other);
+
         }
 
-        else if (isAttacking)
+        else
         {
-            playerCharacter.Rebound(null);
-            isAttacking = false;
-            attackTarget = null;
+            playerCharacter.CheckRebound(null);
         }
     }
 
