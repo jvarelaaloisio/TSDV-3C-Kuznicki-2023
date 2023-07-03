@@ -11,7 +11,6 @@ public class LevelManager : MonoBehaviour
     [SerializeField] private UnityEvent OnEndLevel;
     [SerializeField] private PlayerController player;
     [SerializeField] private Transform startingPoint;
-    [SerializeField] private Cinemachine.CinemachineFreeLook camera;
     [SerializeField] private GameObject[] respawneableObjects;
     [SerializeField] private GameObject pauseMenu;
     [SerializeField] private MenuInput menuInput;
@@ -54,12 +53,6 @@ public class LevelManager : MonoBehaviour
             pauseMenu.SetActive(false);
             menuInput.TogglePause();
         }
-    }
-
-
-    public void LoadNextLevel()
-    {
-        //GameManager.Instance.LoadGameLevel(true);
     }
 
     public void LoadMainMenu()
