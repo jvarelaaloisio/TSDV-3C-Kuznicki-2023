@@ -7444,10 +7444,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 1691113767108639659, guid: 3c49e5e994434464c8f8a514f5de7f24, type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 1691113767424663218, guid: 3c49e5e994434464c8f8a514f5de7f24, type: 3}
       propertyPath: m_RootOrder
       value: 4
@@ -10962,7 +10958,6 @@ MonoBehaviour:
         m_CallState: 2
   player: {fileID: 950242960}
   startingPoint: {fileID: 1663047051}
-  camera: {fileID: 1212614335}
   respawneableObjects:
   - {fileID: 1029427632}
   - {fileID: 793249917}
