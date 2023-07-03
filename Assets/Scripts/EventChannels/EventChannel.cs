@@ -5,7 +5,10 @@ using UnityEngine;
 
 namespace kuznickiEventChannel
 {
-    //TODO: Documentation - Add summary
+    /// <summary>
+    /// Class that handles events communication between two gameObjects
+    /// </summary>
+    /// <typeparam name="T"></typeparam>
     public abstract class EventChannelSO<T> : ScriptableObject
     {
         private Action<T> myAction;

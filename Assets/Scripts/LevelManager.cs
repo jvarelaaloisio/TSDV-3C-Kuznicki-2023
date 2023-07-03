@@ -12,7 +12,6 @@ public class LevelManager : MonoBehaviour
     [SerializeField] private Transform startingPoint;
     [SerializeField] private GameObject[] respawneableObjects;
     [SerializeField] private GameObject pauseMenu;
-    [SerializeField] private MenuInput menuInput;
 
     private bool isPaused = false;
 
@@ -22,6 +21,9 @@ public class LevelManager : MonoBehaviour
         endGoalTrigger.OnPlayerTrigger += OnEndLevelHandler;
     }
 
+    /// <summary>
+    /// Respawns player in level
+    /// </summary>
     public void RespawnPlayer()
     {
         player.transform.position = startingPoint.position;
@@ -35,6 +37,9 @@ public class LevelManager : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// On pause input recieved
+    /// </summary>
     public void OnPause()
     {
         isPaused = !isPaused;
@@ -43,27 +48,35 @@ public class LevelManager : MonoBehaviour
         {
             Time.timeScale = 0;
             pauseMenu.SetActive(true);
-            menuInput.TogglePause();
         }
         else
         {
             Time.timeScale = 1;
             pauseMenu.SetActive(false);
-            menuInput.TogglePause();
         }
     }
 
+    /// <summary>
+    /// Loads main menu scene
+    /// </summary>
     public void LoadMainMenu()
     {
         Time.timeScale = 1;
         GameManager.Instance.LoadMenu();
     }
 
+    /// <summary>
+    /// loads next level scene
+    /// </summary>
     public void LoadNextLevel()
     {
         GameManager.Instance.LoadLevel(SceneManager.GetActiveScene().buildIndex+1);
     }
 
+    /// <summary>
+    /// called on reached end level trigger
+    /// </summary>
+    /// <param name="controller"></param>
     private void OnEndLevelHandler(PlayerController controller)
     {
         OnEndLevel.Invoke();

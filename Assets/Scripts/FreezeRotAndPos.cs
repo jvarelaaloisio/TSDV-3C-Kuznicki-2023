@@ -6,8 +6,9 @@ public class FreezeRotAndPos : MonoBehaviour
 {
     [SerializeField] private bool freezeRotation;
     [SerializeField] private bool freezePosition;
-    // Update is called once per frame
+
     //TODO: Fix - Unclear logic - Why is this necessary?
+    //Needs further discussion
     void Update()
     {
         if(freezeRotation)
