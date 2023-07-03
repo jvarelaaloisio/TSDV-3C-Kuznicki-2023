@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
+using UnityEngine.SceneManagement;
 
 public class LevelManager : MonoBehaviour
 {
@@ -37,7 +38,6 @@ public class LevelManager : MonoBehaviour
     public void OnPause()
     {
         isPaused = !isPaused;
-        Debug.Log("OnPause: " + isPaused);
 
         if (isPaused)
         {
@@ -58,6 +58,12 @@ public class LevelManager : MonoBehaviour
         Time.timeScale = 1;
         GameManager.Instance.LoadMenu();
     }
+
+    public void LoadNextLevel()
+    {
+        GameManager.Instance.LoadLevel(SceneManager.GetActiveScene().buildIndex+1);
+    }
+
     private void OnEndLevelHandler(PlayerController controller)
     {
         OnEndLevel.Invoke();
