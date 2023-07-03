@@ -54,4 +54,9 @@ public class MenuManager : MonoBehaviour
             controlText.text = "Controller";
         }
     }
+
+    public void QuitApplication()
+    {
+        Application.Quit();
+    }
 }
