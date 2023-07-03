@@ -8,7 +8,6 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private Transform launchAttackPoint;
     [SerializeField] private Transform cameraPoint;
     [SerializeField] private PlayerSettings settings;
-    [SerializeField] private PlayerModel playerModel;
 
     [SerializeField] private PlayerCharacter playerCharacter;
 
@@ -55,14 +54,14 @@ public class PlayerController : MonoBehaviour
                 if (Vector3.Distance(coll.transform.position, launchAttackPoint.position) <= settings.launchAttackDetectRadius)
                     enemies.Add(coll.transform);
                 else
-                    coll.GetComponent<ITargetable>()?.SetTargetted(false);
+                    coll.GetComponent<ITargetable>()?.SetTargettedState(false);
             }
         }
 
         if (enemies.Count > 0)
         {
             attackTarget = GetClosest(enemies);
-            attackTarget.gameObject.GetComponent<ITargetable>()?.SetTargetted(true);
+            attackTarget.gameObject.GetComponent<ITargetable>()?.SetTargettedState(true);
         }
         else
             attackTarget = null;

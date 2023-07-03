@@ -4,5 +4,5 @@ using UnityEngine;
 
 public interface ITargetable
 {
-    public void SetTargetted(bool value);
+    public void SetTargettedState(bool value);
 }

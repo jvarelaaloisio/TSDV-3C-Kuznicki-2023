@@ -7,14 +7,20 @@ public class GameManager : MonoBehaviourSingleton<GameManager>
 {
     [SerializeField] private int MenuBuildIndex = 0;
 
+    /// <summary>
+    /// Loads scene by given index param
+    /// </summary>
+    /// <param name="sceneIndex"></param>
     public void LoadLevel(int sceneIndex)
     {
         SceneManager.LoadScene(sceneIndex);
     }
 
+    /// <summary>
+    /// loads pre-set menu scene
+    /// </summary>
     public void LoadMenu()
     {
-        //TODO: Fix - Hardcoded value
         SceneManager.LoadScene(MenuBuildIndex);
     }
 }
