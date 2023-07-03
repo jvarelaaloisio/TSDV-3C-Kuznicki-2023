@@ -27,8 +27,8 @@ public class LevelManager : MonoBehaviour
     public void RespawnPlayer()
     {
         player.transform.position = startingPoint.position;
-        player.GetPlayerCharacter().GetRigidbody().rotation = Quaternion.Euler(Vector3.zero);
-        player.GetPlayerCharacter().GetRigidbody().velocity = Vector3.zero;
+        player.PlayerCharacter.GetRigidbody().rotation = Quaternion.Euler(Vector3.zero);
+        player.PlayerCharacter.GetRigidbody().velocity = Vector3.zero;
 
         foreach (var item in respawneableObjects)
         {
@@ -46,11 +46,13 @@ public class LevelManager : MonoBehaviour
 
         if (isPaused)
         {
+            Cursor.lockState = CursorLockMode.Confined;
             Time.timeScale = 0;
             pauseMenu.SetActive(true);
         }
         else
         {
+            Cursor.lockState = CursorLockMode.Locked;
             Time.timeScale = 1;
             pauseMenu.SetActive(false);
         }
@@ -66,7 +68,7 @@ public class LevelManager : MonoBehaviour
     }
 
     /// <summary>
-    /// loads next level scene
+    /// Loads next level scene
     /// </summary>
     public void LoadNextLevel()
     {
@@ -74,7 +76,7 @@ public class LevelManager : MonoBehaviour
     }
 
     /// <summary>
-    /// called on reached end level trigger
+    /// Called on reached end level trigger
     /// </summary>
     /// <param name="controller"></param>
     private void OnEndLevelHandler(PlayerController controller)

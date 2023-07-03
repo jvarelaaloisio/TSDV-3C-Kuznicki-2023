@@ -17,6 +17,11 @@ public class PlayerController : MonoBehaviour
 
     private bool isAttacking;
 
+    public PlayerCharacter PlayerCharacter
+    {
+        get => playerCharacter;
+    }
+
     private void Update()
     {
         playerCharacter.Move(GetRelativeMovement());
@@ -24,6 +29,10 @@ public class PlayerController : MonoBehaviour
         CheckNearbyEnemies();
     }
 
+    /// <summary>
+    /// Gets movement relative to camera position
+    /// </summary>
+    /// <returns></returns>
     private Vector3 GetRelativeMovement()
     {
         //TODO: Fix - Cache value/s
@@ -42,6 +51,11 @@ public class PlayerController : MonoBehaviour
 
 
     //TODO: Fix - Why is this called in Update?
+    //because it needs to detect nearest enemy at all times
+    
+    /// <summary>
+    /// Casts sphere to detect nearby enemies and target them
+    /// </summary>
     private void CheckNearbyEnemies()
     {
         List<Transform> enemies = new List<Transform>();
@@ -67,24 +81,34 @@ public class PlayerController : MonoBehaviour
             attackTarget = null;
     }
 
-
+    /// <summary>
+    /// On move input
+    /// </summary>
+    /// <param name="value"></param>
     private void OnMove(InputValue value)
     {
         moveInput = value.Get<Vector2>();
     }
 
+    /// <summary>
+    /// On jump input
+    /// </summary>
+    /// <param name="value"></param>
     private void OnJump(InputValue value)
     {
         playerCharacter.Jump();
     }
 
-
+    /// <summary>
+    /// On attack input
+    /// </summary>
+    /// <param name="inputValue"></param>
     private void OnAttack(InputValue inputValue)
     {
         //TODO: TP2 - FSM
         //needs further discussion - inclussion of fsm was never mentioned in our
         //talks in class and I don't think FSM is necessary 
-        
+
         if (isAttacking)
             return;
 
@@ -95,7 +119,11 @@ public class PlayerController : MonoBehaviour
 
     }
 
-
+    /// <summary>
+    /// Gets closest transform from a list
+    /// </summary>
+    /// <param name="points"></param>
+    /// <returns></returns>
     private Transform GetClosest(List<Transform> points)
     {
         Transform closest = points[0];
@@ -110,10 +138,6 @@ public class PlayerController : MonoBehaviour
 
         return closest;
     }
-
-    //TODO: Fix - Should be native Setter/Getter
-    public PlayerCharacter GetPlayerCharacter() => playerCharacter;
-
 
     private void OnCollisionEnter(Collision other)
     {

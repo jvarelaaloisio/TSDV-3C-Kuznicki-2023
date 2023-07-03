@@ -20,7 +20,39 @@ public class PlayerCharacter : MonoBehaviour, ICharacter
         CheckGrounded();
     }
 
+    /// <summary>
+    /// Checks if player is grounded
+    /// </summary>
+    private void CheckGrounded()
+    {
+        RaycastHit hit;
 
+        if (Physics.Raycast(transform.position, -Vector3.up, out hit, 0.8f))
+        {
+            characterGrounded = true;
+
+            if (currentTimeJumping > playerSettings.targetLowJumpTimer)
+            {
+                characterJumping = false;
+                currentTimeJumping = 0;
+                jumpCount = 1;
+            }
+
+            coyoteCurrentTime = 0;
+        }
+        else
+        {
+            characterGrounded = false;
+        }
+
+        if (!characterGrounded)
+            coyoteCurrentTime += Time.deltaTime;
+
+    }
+
+    /// <summary>
+    /// Upwards force when jumping
+    /// </summary>
     public void Jump()
     {
         if (coyoteCurrentTime <= playerSettings.coyoteTargetTime)
@@ -62,25 +94,23 @@ public class PlayerCharacter : MonoBehaviour, ICharacter
         if (rb.useGravity)
         {
             rb.AddForce(new Vector3(relativeMovement.x * playerSettings.speed, 0.0f, relativeMovement.z * playerSettings.speed), ForceMode.VelocityChange);
-            //TODO: TP2 - Remove unused methods/variables/classes
-            //rb.velocity = rb.velocity + new Vector3(forceAdded.x * settings.speed, 0.0f, forceAdded.z * settings.speed);
 
             if (rb.velocity.y < 0.0f)
             {
-                //isJumping = false;
                 rb.velocity += Vector3.up * playerSettings.fallingMultiplier * Physics.gravity.y * Time.deltaTime;
             }
             else if (rb.velocity.y > 0f && !characterGrounded)
                 rb.velocity += Vector3.up * Physics.gravity.y * (playerSettings.lowJumpMultiplier - 1) * Time.deltaTime;
-
-            //TODO: TP2 - Remove unused methods/variables/classes
-            //CapVelocities();
         }
 
         if (characterJumping)
             currentTimeJumping += Time.deltaTime;
     }
 
+    /// <summary>
+    /// Launches player towards attackTarget
+    /// </summary>
+    /// <param name="attackTarget"></param>
     public void LaunchAttack(Transform attackTarget)
     {
         rb.rotation = Quaternion.Euler(Vector3.zero);
@@ -91,7 +121,10 @@ public class PlayerCharacter : MonoBehaviour, ICharacter
         rb.AddRelativeForce(destination * playerSettings.launchAttackForce, ForceMode.Impulse);
     }
 
-
+    /// <summary>
+    /// Called on rebound from collision with enemy
+    /// </summary>
+    /// <param name="other"></param>
     public void Rebound(Collision other)
     {
         rb.useGravity = true;
@@ -107,36 +140,14 @@ public class PlayerCharacter : MonoBehaviour, ICharacter
         rb.AddForce(Vector3.up * 200, ForceMode.Impulse);
     }
 
+    /// <summary>
+    /// Speed adder for player rigidbody
+    /// </summary>
+    /// <param name="direction"></param>
+    /// <param name="speedBoost"></param>
     public void AddSpeed(Vector3 direction, float speedBoost)
     {
         rb.AddForce(direction * speedBoost, ForceMode.Impulse);
-    }
-
-    private void CheckGrounded()
-    {
-        RaycastHit hit;
-
-        if (Physics.Raycast(transform.position, -Vector3.up, out hit, 0.8f))
-        {
-            characterGrounded = true;
-
-            if (currentTimeJumping > playerSettings.targetLowJumpTimer)
-            {
-                characterJumping = false;
-                currentTimeJumping = 0;
-                jumpCount = 1;
-            }
-
-            coyoteCurrentTime = 0;
-        }
-        else
-        {
-            characterGrounded = false;
-        }
-
-        if (!characterGrounded)
-            coyoteCurrentTime += Time.deltaTime;
-
     }
 
     /// <summary>
@@ -157,6 +168,10 @@ public class PlayerCharacter : MonoBehaviour, ICharacter
         characterJumping = value;
     }
 
+    /// <summary>
+    /// Rigidbody getter
+    /// </summary>
+    /// <returns></returns>
     public Rigidbody GetRigidbody()
     {
         return rb;

@@ -11,13 +11,22 @@ public class PlayerTriggerDetector : MonoBehaviour
 
     [SerializeField] private UnityEvent OnPlayerTriggerEvent;
 
+
+    private void Awake()
+    {
+        OnPlayerTrigger += (PlayerController controller) => { OnPlayerTriggerEvent?.Invoke(); };
+    }
+
+    private void OnDestroy()
+    {
+        OnPlayerTrigger -= (PlayerController controller) => { OnPlayerTriggerEvent?.Invoke(); };
+    }
+
     private void OnTriggerEnter(Collider other)
     {
         
         if(other.TryGetComponent<PlayerController>(out PlayerController playerController))
         {
-            //TODO: Fix - Could subscribe the unityEvent to the action in the OnValidate or in the Awake method
-            OnPlayerTriggerEvent.Invoke();
             OnPlayerTrigger?.Invoke(playerController);
         }
 
