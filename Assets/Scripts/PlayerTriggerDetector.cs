@@ -9,17 +9,17 @@ public class PlayerTriggerDetector : MonoBehaviour
     public Action<PlayerController> OnPlayerTrigger;
     public Action<PlayerController> OnPlayerTriggerExit;
 
-    [SerializeField] private UnityEvent OnPlayerTriggerEvent;
+    [SerializeField] private UnityEvent<PlayerController> OnPlayerTriggerEvent;
 
 
     private void Awake()
     {
-        OnPlayerTrigger += (PlayerController controller) => { OnPlayerTriggerEvent?.Invoke(); };
+        OnPlayerTrigger += (PlayerController controller) => { OnPlayerTriggerEvent?.Invoke(controller); };
     }
 
     private void OnDestroy()
     {
-        OnPlayerTrigger -= (PlayerController controller) => { OnPlayerTriggerEvent?.Invoke(); };
+        OnPlayerTrigger -= (PlayerController controller) => { OnPlayerTriggerEvent?.Invoke(controller); };
     }
 
     private void OnTriggerEnter(Collider other)

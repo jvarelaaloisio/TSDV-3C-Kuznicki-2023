@@ -966,7 +966,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e9020cedcaad6a84e8db0465f78971a8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  endGoalTrigger: {fileID: 5205911110609080461}
+  endGoalChannel: {fileID: 11400000, guid: e26022b90f9137d489f40148a5fdcd14, type: 2}
   OnEndLevel:
     m_PersistentCalls:
       m_Calls:
@@ -2844,17 +2844,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 74de0deee5bf4764ba5746a47e295f28, type: 3}
---- !u!114 &5205911110609080461 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 2272954211086056841, guid: 74de0deee5bf4764ba5746a47e295f28, type: 3}
-  m_PrefabInstance: {fileID: 5205911110609080460}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2e35ac02482857e4d98ce81b032e98d9, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1001 &5648421711442157036
 PrefabInstance:
   m_ObjectHideFlags: 0

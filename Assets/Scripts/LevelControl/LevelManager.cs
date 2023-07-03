@@ -3,10 +3,12 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.SceneManagement;
+using kuznickiEventChannel;
+
 
 public class LevelManager : MonoBehaviour
 {
-    [SerializeField] private PlayerTriggerDetector endGoalTrigger;
+    [SerializeField] private PlayerControllerEventChannel endGoalChannel;
     [SerializeField] private UnityEvent OnEndLevel;
     [SerializeField] private PlayerController player;
     [SerializeField] private Transform startingPoint;
@@ -18,7 +20,13 @@ public class LevelManager : MonoBehaviour
     private void Awake()
     {
         Cursor.lockState = CursorLockMode.Locked;
-        endGoalTrigger.OnPlayerTrigger += OnEndLevelHandler;
+        endGoalChannel.Subscribe(OnEndLevelHandler);
+    }
+
+    private void OnDestroy()
+    {
+        endGoalChannel.Unsubscribe(OnEndLevelHandler);
+
     }
 
     /// <summary>

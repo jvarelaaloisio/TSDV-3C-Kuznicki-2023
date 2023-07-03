@@ -4860,7 +4860,20 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   OnPlayerTriggerEvent:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 11400000, guid: e26022b90f9137d489f40148a5fdcd14, type: 2}
+        m_TargetAssemblyTypeName: kuznickiEventChannel.EventChannelSO`1[[PlayerController,
+          Assembly-CSharp
+        m_MethodName: RaiseEvent
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!65 &641245981295568700
 BoxCollider:
   m_ObjectHideFlags: 0

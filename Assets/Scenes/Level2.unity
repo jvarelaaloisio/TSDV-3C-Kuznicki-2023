@@ -1573,6 +1573,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 232905252, guid: 74de0deee5bf4764ba5746a47e295f28, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 1.47
+      objectReference: {fileID: 0}
     - target: {fileID: 2103479703743992031, guid: 74de0deee5bf4764ba5746a47e295f28, type: 3}
       propertyPath: m_Name
       value: GoalTrigger
@@ -1635,17 +1639,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 74de0deee5bf4764ba5746a47e295f28, type: 3}
---- !u!114 &148631533 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 2272954211086056841, guid: 74de0deee5bf4764ba5746a47e295f28, type: 3}
-  m_PrefabInstance: {fileID: 148631532}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2e35ac02482857e4d98ce81b032e98d9, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &149830284 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 763c291b59f218e42b55c1eed2fe8717, type: 3}
@@ -10708,7 +10701,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e9020cedcaad6a84e8db0465f78971a8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  endGoalTrigger: {fileID: 148631533}
+  endGoalChannel: {fileID: 11400000, guid: e26022b90f9137d489f40148a5fdcd14, type: 2}
   OnEndLevel:
     m_PersistentCalls:
       m_Calls:
