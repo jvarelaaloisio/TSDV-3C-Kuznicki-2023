@@ -803,7 +803,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 1722714084}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: MenuInput, Assembly-CSharp
         m_MethodName: ToggleCredits
         m_Mode: 1
@@ -1252,7 +1252,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1722714084}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: MenuInput, Assembly-CSharp
         m_MethodName: ToggleControlScheme
         m_Mode: 2
@@ -1489,7 +1489,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 1722714084}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: MenuInput, Assembly-CSharp
         m_MethodName: ToggleOptions
         m_Mode: 1
@@ -1717,7 +1717,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &987047591
 GameObject:
@@ -2658,7 +2658,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 1722714084}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: MenuInput, Assembly-CSharp
         m_MethodName: ToggleOptions
         m_Mode: 1
@@ -2708,17 +2708,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1694417431}
   m_CullTransparentMesh: 1
---- !u!114 &1722714084 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 4360059304789912551, guid: 7bef8dc88f51c684d8716e696ab73420, type: 3}
-  m_PrefabInstance: {fileID: 4360059304209624067}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 78d3bc04faf40834aaa20e90249e68b5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &1763922354
 GameObject:
   m_ObjectHideFlags: 0
@@ -2827,7 +2816,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 1722714084}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: MenuInput, Assembly-CSharp
         m_MethodName: ToggleCredits
         m_Mode: 1
@@ -3115,112 +3104,3 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
---- !u!1001 &4360059304209624067
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 4360059304789912544, guid: 7bef8dc88f51c684d8716e696ab73420, type: 3}
-      propertyPath: m_RootOrder
-      value: 4
-      objectReference: {fileID: 0}
-    - target: {fileID: 4360059304789912544, guid: 7bef8dc88f51c684d8716e696ab73420, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4360059304789912544, guid: 7bef8dc88f51c684d8716e696ab73420, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4360059304789912544, guid: 7bef8dc88f51c684d8716e696ab73420, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4360059304789912544, guid: 7bef8dc88f51c684d8716e696ab73420, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4360059304789912544, guid: 7bef8dc88f51c684d8716e696ab73420, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4360059304789912544, guid: 7bef8dc88f51c684d8716e696ab73420, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4360059304789912544, guid: 7bef8dc88f51c684d8716e696ab73420, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4360059304789912544, guid: 7bef8dc88f51c684d8716e696ab73420, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4360059304789912544, guid: 7bef8dc88f51c684d8716e696ab73420, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4360059304789912544, guid: 7bef8dc88f51c684d8716e696ab73420, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4360059304789912546, guid: 7bef8dc88f51c684d8716e696ab73420, type: 3}
-      propertyPath: m_Name
-      value: UIInputReciever
-      objectReference: {fileID: 0}
-    - target: {fileID: 4360059304789912546, guid: 7bef8dc88f51c684d8716e696ab73420, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4360059304789912551, guid: 7bef8dc88f51c684d8716e696ab73420, type: 3}
-      propertyPath: backButtonCredits
-      value: 
-      objectReference: {fileID: 421601881}
-    - target: {fileID: 4360059304789912551, guid: 7bef8dc88f51c684d8716e696ab73420, type: 3}
-      propertyPath: allButtons.Array.data[0]
-      value: 
-      objectReference: {fileID: 1187840241}
-    - target: {fileID: 4360059304789912551, guid: 7bef8dc88f51c684d8716e696ab73420, type: 3}
-      propertyPath: allButtons.Array.data[1]
-      value: 
-      objectReference: {fileID: 1763922356}
-    - target: {fileID: 4360059304789912551, guid: 7bef8dc88f51c684d8716e696ab73420, type: 3}
-      propertyPath: allButtons.Array.data[2]
-      value: 
-      objectReference: {fileID: 436897623}
-    - target: {fileID: 4360059304789912551, guid: 7bef8dc88f51c684d8716e696ab73420, type: 3}
-      propertyPath: mainMenuButtons.Array.size
-      value: 4
-      objectReference: {fileID: 0}
-    - target: {fileID: 4360059304789912551, guid: 7bef8dc88f51c684d8716e696ab73420, type: 3}
-      propertyPath: mainMenuButtons.Array.data[0]
-      value: 
-      objectReference: {fileID: 1187840241}
-    - target: {fileID: 4360059304789912551, guid: 7bef8dc88f51c684d8716e696ab73420, type: 3}
-      propertyPath: mainMenuButtons.Array.data[1]
-      value: 
-      objectReference: {fileID: 1694417433}
-    - target: {fileID: 4360059304789912551, guid: 7bef8dc88f51c684d8716e696ab73420, type: 3}
-      propertyPath: mainMenuButtons.Array.data[2]
-      value: 
-      objectReference: {fileID: 1763922356}
-    - target: {fileID: 4360059304789912551, guid: 7bef8dc88f51c684d8716e696ab73420, type: 3}
-      propertyPath: mainMenuButtons.Array.data[3]
-      value: 
-      objectReference: {fileID: 436897623}
-    - target: {fileID: 4360059304789912551, guid: 7bef8dc88f51c684d8716e696ab73420, type: 3}
-      propertyPath: optionsMenuButtons.Array.size
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 4360059304789912551, guid: 7bef8dc88f51c684d8716e696ab73420, type: 3}
-      propertyPath: optionsMenuButtons.Array.data[0]
-      value: 
-      objectReference: {fileID: 803284058}
-    - target: {fileID: 4360059304789912551, guid: 7bef8dc88f51c684d8716e696ab73420, type: 3}
-      propertyPath: optionsMenuButtons.Array.data[1]
-      value: 
-      objectReference: {fileID: 624566961}
-    m_RemovedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: 7bef8dc88f51c684d8716e696ab73420, type: 3}

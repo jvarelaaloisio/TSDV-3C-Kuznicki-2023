@@ -5,6 +5,10 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "CameraSettingsData", menuName = "ScriptableObjects/CameraSettings")]
 public class CameraSettings : ScriptableObject
 {
+    public string playerPrefKey = "ControlScheme";
+    public string playerPrefKeyKeyboard = "Keyboard";
+    public string playerPrefKeyController = "Controller";
+
     [Header("Controller")]
     public float controllerYAxisMaxSpeed = 0.1f;
     public float controllerXAxisMaxSpeed = 3.0f;

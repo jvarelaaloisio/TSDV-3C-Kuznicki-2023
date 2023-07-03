@@ -31,7 +31,31 @@ public class PlayerController : MonoBehaviour
         rb = GetComponent<Rigidbody>();
 
         playerModel = new PlayerModel(rb, GetRelativeMovement, IsJumping, IsGrounded, settings);
+
+        //SetCameraValues();
     }
+
+    //private void SetCameraValues()
+    //{
+    //    //TODO: Fix - Hardcoded value
+    //    string controlScheme = PlayerPrefs.GetString("ControlScheme", " ");
+
+    //    if (controlScheme == null)
+    //        return;
+
+    //    //TODO: Fix - Hardcoded value
+    //    if (controlScheme == "Keyboard")
+    //    {
+    //        //TODO: Fix - Hardcoded value
+    //        GetComponent<Camera>().m_YAxis.m_MaxSpeed = 0.01f;
+    //        GetComponent<Camera>().m_XAxis.m_MaxSpeed = 0.2f;
+    //    }
+    //    else
+    //    {
+    //        GetComponent<Camera>().m_YAxis.m_MaxSpeed = 0.1f;
+    //        GetComponent<Camera>().m_XAxis.m_MaxSpeed = 3f;
+    //    }
+    //}
 
     private void Update()
     {
