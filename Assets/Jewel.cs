@@ -13,7 +13,7 @@ public class Jewel : MonoBehaviour, IAttackable, ITargetable
         outline.enabled = value;
     }
 
-    public void RecieveAttack()
+    public void ReceiveAttack()
     {
         if (deathParticles != null)
             deathParticles.Play();

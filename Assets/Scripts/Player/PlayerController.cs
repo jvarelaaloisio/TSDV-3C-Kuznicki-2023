@@ -12,68 +12,44 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private Transform cameraPoint;
     [SerializeField] private PlayerSettings settings;
     [SerializeField] private PlayerModel playerModel;
-    private Rigidbody rb;
+
+    [SerializeField] private PlayerCharacter playerCharacter;
+
     private Transform attackTarget;
 
     private Vector2 input;
 
     private bool initCoyoteTimer = false;
     private bool isGrounded;
-    private bool isJumping;
     private bool isAttacking;
 
     private int jumpCount = 1;
 
     private float coyoteCurrentTime;
 
-    private void Awake()
-    {
-        rb = GetComponent<Rigidbody>();
-
-        playerModel = new PlayerModel(rb, GetRelativeMovement, IsJumping, IsGrounded, settings);
-    }
-
     private void Update()
     {
-        CheckGrounded();
+        playerCharacter.Move(GetRelativeMovement());
 
         CheckNearbyEnemies();
     }
 
-    private void FixedUpdate()
+    private Vector3 GetRelativeMovement()
     {
-        playerModel.MyFixedUpdate();
+        //TODO: Fix - Cache value/s
+        //TODO: Fix - Camera.main.transform.TransformDirection()
+        Vector3 cameraForward = Camera.main.transform.forward;
+        cameraForward.y = 0f;
+        cameraForward = cameraForward.normalized;
+
+        Vector3 cameraRight = Camera.main.transform.right;
+        cameraRight.y = 0f;
+        cameraRight = cameraRight.normalized;
+
+        return (cameraForward * input.y + cameraRight * input.x) * Time.deltaTime;
     }
 
-    //TODO: TP2 - SOLID This could be it's own component. But it's not obligatory :)
-    private void CheckGrounded()
-    {
-        RaycastHit hit;
-        //TODO: TP2 - Remove unused methods/variables/classes
-        Vector3 originOffset = transform.position + new Vector3(0, -GetComponent<SphereCollider>().radius, 0);
- 
-        if (Physics.Raycast(transform.position, -Vector3.up, out hit, 0.8f))
-        {
-            isGrounded = true;
 
-            if (playerModel.CurrentTimeJumping > settings.targetLowJumpTimer)
-            {
-                isJumping = false;
-                playerModel.CurrentTimeJumping = 0;
-                jumpCount = 1;
-            }
-
-            coyoteCurrentTime = 0;
-        }
-        else
-        {
-            isGrounded = false;
-        }
-
-        if (!isGrounded)
-            coyoteCurrentTime += Time.deltaTime;
-
-    }
 
     //TODO: Fix - Why is this called in Update?
     private void CheckNearbyEnemies()
@@ -102,22 +78,6 @@ public class PlayerController : MonoBehaviour
     }
 
 
-
-    private Vector3 GetRelativeMovement()
-    {
-        //TODO: Fix - Cache value/s
-        //TODO: Fix - Camera.main.transform.TransformDirection()
-        Vector3 cameraForward = Camera.main.transform.forward;
-        cameraForward.y = 0f;
-        cameraForward = cameraForward.normalized;
-
-        Vector3 cameraRight = Camera.main.transform.right;
-        cameraRight.y = 0f;
-        cameraRight = cameraRight.normalized;
-
-        return (cameraForward * input.y + cameraRight * input.x) * Time.deltaTime;
-    }
-
     private void OnMove(InputValue value)
     {
         //TODO: Fix - Unclear name
@@ -126,15 +86,7 @@ public class PlayerController : MonoBehaviour
 
     private void OnJump(InputValue value)
     {
-        if (isGrounded || coyoteCurrentTime <= settings.coyoteTargetTime)
-        {
-            if (jumpCount > 0)
-            {
-                isJumping = true;
-                jumpCount--;
-                playerModel.Jump();
-            }
-        }
+        playerCharacter.Jump();
     }
 
 
@@ -147,7 +99,7 @@ public class PlayerController : MonoBehaviour
         CheckNearbyEnemies();
 
         if (attackTarget != null)
-            playerModel.LaunchAttack(attackTarget);
+            playerCharacter.LaunchAttack(attackTarget);
 
     }
 
@@ -171,18 +123,12 @@ public class PlayerController : MonoBehaviour
     public PlayerModel GetPlayerModel() => playerModel;
 
 
-    //TODO: TP2 - Syntax - Fix declaration order
-    public bool IsJumping() => isJumping;
-    public bool IsGrounded() => isGrounded;
-
-
-
     private void OnCollisionEnter(Collision other)
     {
         //TODO: Fix - TryGetComponent()
         if (other.gameObject.GetComponent<IAttackable>() != null)
         {
-            playerModel.Rebound(other);
+            playerCharacter.Rebound(other);
             attackTarget = null;
             isAttacking = false;
         }
@@ -191,7 +137,7 @@ public class PlayerController : MonoBehaviour
         {
             if (isAttacking)
             {
-                playerModel.Rebound(null);
+                playerCharacter.Rebound(null);
                 isAttacking = false;
                 attackTarget = null;
             }
