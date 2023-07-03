@@ -13,7 +13,7 @@ public class PlayerController : MonoBehaviour
 
     private Transform attackTarget;
 
-    private Vector2 input;
+    private Vector2 moveInput;
 
     private bool isAttacking;
 
@@ -36,7 +36,7 @@ public class PlayerController : MonoBehaviour
         cameraRight.y = 0f;
         cameraRight = cameraRight.normalized;
 
-        return (cameraForward * input.y + cameraRight * input.x) * Time.deltaTime;
+        return (cameraForward * moveInput.y + cameraRight * moveInput.x) * Time.deltaTime;
     }
 
 
@@ -70,8 +70,7 @@ public class PlayerController : MonoBehaviour
 
     private void OnMove(InputValue value)
     {
-        //TODO: Fix - Unclear name
-        input = value.Get<Vector2>();
+        moveInput = value.Get<Vector2>();
     }
 
     private void OnJump(InputValue value)
@@ -83,6 +82,9 @@ public class PlayerController : MonoBehaviour
     private void OnAttack(InputValue inputValue)
     {
         //TODO: TP2 - FSM
+        //needs further discussion - inclussion of fsm was never mentioned in our
+        //talks in class and I don't think FSM is necessary 
+        
         if (isAttacking)
             return;
 
@@ -115,22 +117,18 @@ public class PlayerController : MonoBehaviour
 
     private void OnCollisionEnter(Collision other)
     {
-        //TODO: Fix - TryGetComponent()
-        if (other.gameObject.GetComponent<IAttackable>() != null)
+        if (other.gameObject.TryGetComponent<IAttackable>(out IAttackable attackable))
         {
             playerCharacter.Rebound(other);
             attackTarget = null;
             isAttacking = false;
         }
-        //TODO: Fix - else if(){}, not else{ if(){} }
-        else
+
+        else if (isAttacking)
         {
-            if (isAttacking)
-            {
-                playerCharacter.Rebound(null);
-                isAttacking = false;
-                attackTarget = null;
-            }
+            playerCharacter.Rebound(null);
+            isAttacking = false;
+            attackTarget = null;
         }
     }
 
