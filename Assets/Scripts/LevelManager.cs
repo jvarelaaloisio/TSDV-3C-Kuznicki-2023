@@ -5,8 +5,6 @@ using UnityEngine.Events;
 
 public class LevelManager : MonoBehaviour
 {
-    //TODO: TP2 - Remove unused methods/variables/classes
-
     [SerializeField] private PlayerTriggerDetector endGoalTrigger;
     [SerializeField] private UnityEvent OnEndLevel;
     [SerializeField] private PlayerController player;

@@ -105,7 +105,7 @@ public class PlayerModel
         if(other != null)
         {
             other.gameObject.GetComponent<ITargetable>().SetTargetted(false);
-            other.gameObject.GetComponent<IAttackable>().RecieveAttack();
+            other.gameObject.GetComponent<IAttackable>().ReceiveAttack();
         }
         rb.AddForce(Vector3.up * 200, ForceMode.Impulse);
     }

@@ -855,7 +855,7 @@ MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 3871810414391755437, guid: a995b2fc943a6c24bb1dab6e51d70df4, type: 3}
   m_PrefabInstance: {fileID: 1062251743}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1062251744}
+  m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 319d2fe34a804e245819465c9505ea59, type: 3}
@@ -1289,7 +1289,6 @@ MonoBehaviour:
         m_CallState: 2
   player: {fileID: 1157894375}
   startingPoint: {fileID: 484598218}
-  camera: {fileID: 681130164}
   respawneableObjects:
   - {fileID: 360628862}
   - {fileID: 133817033}
@@ -1476,25 +1475,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a995b2fc943a6c24bb1dab6e51d70df4, type: 3}
---- !u!1 &1062251744 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 3871810414391755426, guid: a995b2fc943a6c24bb1dab6e51d70df4, type: 3}
-  m_PrefabInstance: {fileID: 1062251743}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &1062251745
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1062251744}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 260f986ab239cc848aa5ccef97f6dd57, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  cameraSettings: {fileID: 11400000, guid: 0be44784ee3d0a8438408146ffa38b26, type: 2}
-  playerCamera: {fileID: 681130164}
 --- !u!1001 &1087315542
 PrefabInstance:
   m_ObjectHideFlags: 0
