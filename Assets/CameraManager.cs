@@ -13,9 +13,11 @@ public class CameraManager : MonoBehaviour
         SetCameraValues();
     }
 
+    /// <summary>
+    /// Set sensibility values for player camera
+    /// </summary>
     private void SetCameraValues()
     {
-        //TODO: Fix - Hardcoded value
         string controlScheme = PlayerPrefs.GetString(cameraSettings.playerPrefKey, " ");
 
         if (controlScheme == null)

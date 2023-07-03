@@ -20,33 +20,8 @@ public class LevelManager : MonoBehaviour
 
     private void Awake()
     {
-
         Cursor.lockState = CursorLockMode.Locked;
         endGoalTrigger.OnPlayerTrigger += OnEndLevelHandler;
-
-        SetCameraValues();
-    }
-
-    private void SetCameraValues()
-    {
-        //TODO: Fix - Hardcoded value
-        string controlScheme = PlayerPrefs.GetString("ControlScheme", " ");
-
-        if (controlScheme == null)
-            return;
-
-        //TODO: Fix - Hardcoded value
-        if (controlScheme == "Keyboard")
-        {
-            //TODO: Fix - Hardcoded value
-            camera.m_YAxis.m_MaxSpeed = 0.01f;
-            camera.m_XAxis.m_MaxSpeed = 0.2f;
-        }
-        else
-        {
-            camera.m_YAxis.m_MaxSpeed = 0.1f;
-            camera.m_XAxis.m_MaxSpeed = 3f;
-        }
     }
 
     public void RespawnPlayer()
