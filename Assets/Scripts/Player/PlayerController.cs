@@ -5,10 +5,7 @@ using UnityEngine.InputSystem;
 
 public class PlayerController : MonoBehaviour
 {
-    //TODO: TP2 - Remove unused methods/variables/classes
-    //[SerializeField] private Transform camera;
     [SerializeField] private Transform launchAttackPoint;
-    //TODO: TP2 - Remove unused methods/variables/classes
     [SerializeField] private Transform cameraPoint;
     [SerializeField] private PlayerSettings settings;
     [SerializeField] private PlayerModel playerModel;
@@ -19,13 +16,7 @@ public class PlayerController : MonoBehaviour
 
     private Vector2 input;
 
-    private bool initCoyoteTimer = false;
-    private bool isGrounded;
     private bool isAttacking;
-
-    private int jumpCount = 1;
-
-    private float coyoteCurrentTime;
 
     private void Update()
     {
@@ -120,7 +111,7 @@ public class PlayerController : MonoBehaviour
     }
 
     //TODO: Fix - Should be native Setter/Getter
-    public PlayerModel GetPlayerModel() => playerModel;
+    public PlayerCharacter GetPlayerCharacter() => playerCharacter;
 
 
     private void OnCollisionEnter(Collision other)

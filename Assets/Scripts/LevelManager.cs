@@ -24,8 +24,8 @@ public class LevelManager : MonoBehaviour
     public void RespawnPlayer()
     {
         player.transform.position = startingPoint.position;
-        player.GetPlayerModel().GetRigidbody().rotation = Quaternion.Euler(Vector3.zero);
-        player.GetPlayerModel().GetRigidbody().velocity = Vector3.zero;
+        player.GetPlayerCharacter().GetRigidbody().rotation = Quaternion.Euler(Vector3.zero);
+        player.GetPlayerCharacter().GetRigidbody().velocity = Vector3.zero;
 
         foreach (var item in respawneableObjects)
         {

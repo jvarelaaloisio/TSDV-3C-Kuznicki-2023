@@ -156,4 +156,9 @@ public class PlayerCharacter : MonoBehaviour, ICharacter
     {
         characterJumping = value;
     }
+
+    public Rigidbody GetRigidbody()
+    {
+        return rb;
+    }
 }
