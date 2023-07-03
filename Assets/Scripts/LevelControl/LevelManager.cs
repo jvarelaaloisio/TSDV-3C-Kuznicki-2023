@@ -33,7 +33,7 @@ public class LevelManager : MonoBehaviour
         foreach (var item in respawneableObjects)
         {
             item.SetActive(true);
-            item.GetComponent<Outline>().enabled = false;
+            item.GetComponent<ToggleOutline>().SetOutlines(false);
         }
     }
 

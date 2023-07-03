@@ -61,21 +61,20 @@ public class PlayerController : MonoBehaviour
         List<Transform> enemies = new List<Transform>();
         foreach (Collider coll in Physics.OverlapSphere(launchAttackPoint.position, settings.ExternLaunchAttackDetectRadius))
         {
-            if (coll.GetComponent<IAttackable>() != null)
+            if (coll.GetComponentInParent<IAttackable>() != null)
             {
-
 
                 if (Vector3.Distance(coll.transform.position, launchAttackPoint.position) <= settings.launchAttackDetectRadius)
                     enemies.Add(coll.transform);
                 else
-                    coll.GetComponent<ITargetable>()?.SetTargettedState(false);
+                    coll.GetComponentInParent<ITargetable>()?.SetTargettedState(false);
             }
         }
 
         if (enemies.Count > 0)
         {
             attackTarget = GetClosest(enemies);
-            attackTarget.gameObject.GetComponent<ITargetable>()?.SetTargettedState(true);
+            attackTarget.gameObject.GetComponentInParent<ITargetable>()?.SetTargettedState(true);
         }
         else
             attackTarget = null;
@@ -105,10 +104,6 @@ public class PlayerController : MonoBehaviour
     /// <param name="inputValue"></param>
     private void OnAttack(InputValue inputValue)
     {
-        //TODO: TP2 - FSM
-        //needs further discussion - inclussion of fsm was never mentioned in our
-        //talks in class and I don't think FSM is necessary 
-
         if (isAttacking)
             return;
 
@@ -141,7 +136,8 @@ public class PlayerController : MonoBehaviour
 
     private void OnCollisionEnter(Collision other)
     {
-        if (other.gameObject.TryGetComponent<IAttackable>(out IAttackable attackable))
+        IAttackable attackable = other.gameObject.GetComponentInParent<IAttackable>();
+        if (attackable != null)
         {
             playerCharacter.Rebound(other);
             attackTarget = null;

@@ -5,7 +5,7 @@ using UnityEngine;
 public class Jewel : MonoBehaviour, IAttackable, ITargetable
 {
     [SerializeField] private ParticleSystem deathParticles;
-    [SerializeField] private Outline outline;
+    [SerializeField] private ToggleOutline toggleOutline;
 
     /// <summary>
     /// Set object targetted state
@@ -13,7 +13,7 @@ public class Jewel : MonoBehaviour, IAttackable, ITargetable
     /// <param name="value"></param>
     public void SetTargettedState(bool value)
     {
-        outline.enabled = value;
+        toggleOutline.SetOutlines(value);
     }
 
     /// <summary>
