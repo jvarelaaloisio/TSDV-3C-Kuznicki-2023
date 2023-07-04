@@ -5,6 +5,7 @@ using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviourSingleton<GameManager>
 {
+    [Tooltip("Scene index for the menu scene")]
     [SerializeField] private int MenuBuildIndex = 0;
 
     /// <summary>

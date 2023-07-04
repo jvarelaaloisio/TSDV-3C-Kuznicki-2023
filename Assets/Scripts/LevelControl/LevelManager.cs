@@ -8,11 +8,15 @@ using kuznickiEventChannel;
 
 public class LevelManager : MonoBehaviour
 {
+    [Tooltip("Event channel to hear when player reaches end goal")]
     [SerializeField] private PlayerControllerEventChannel endGoalChannel;
+    [Tooltip("Actions done on ending level")]
     [SerializeField] private UnityEvent OnEndLevel;
     [SerializeField] private PlayerController player;
     [SerializeField] private Transform startingPoint;
+    [Tooltip("All game objects that need re-enabling when restarting level")]
     [SerializeField] private GameObject[] respawneableObjects;
+    [Tooltip("GameObject containing the pause menu")]
     [SerializeField] private GameObject pauseMenu;
 
     private bool isPaused = false;
