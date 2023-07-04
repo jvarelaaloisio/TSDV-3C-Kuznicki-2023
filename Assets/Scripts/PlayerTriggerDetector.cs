@@ -29,7 +29,6 @@ public class PlayerTriggerDetector : MonoBehaviour
         {
             OnPlayerTrigger?.Invoke(playerController);
         }
-
     }
 
     private void OnTriggerExit(Collider other)

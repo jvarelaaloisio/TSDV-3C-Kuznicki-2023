@@ -31,8 +31,6 @@ public class PlayerController : MonoBehaviour
     /// <returns></returns>
     private Vector3 GetRelativeMovement()
     {
-        //TODO: Fix - Cache value/s
-        //TODO: Fix - Camera.main.transform.TransformDirection()
         Vector3 cameraForward = Camera.main.transform.forward;
         cameraForward.y = 0f;
         cameraForward = cameraForward.normalized;
@@ -43,11 +41,6 @@ public class PlayerController : MonoBehaviour
 
         return (cameraForward * moveInput.y + cameraRight * moveInput.x) * Time.deltaTime;
     }
-
-
-
-    //TODO: Fix - Why is this called in Update?
-    //because it needs to detect nearest enemy at all times
 
     /// <summary>
     /// Casts sphere to detect nearby enemies and target them
