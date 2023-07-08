@@ -9,24 +9,31 @@ public class PlayerTriggerDetector : MonoBehaviour
     public Action<PlayerController> OnPlayerTrigger;
     public Action<PlayerController> OnPlayerTriggerExit;
 
-    [SerializeField] private UnityEvent OnPlayerTriggerEvent;
+    [SerializeField] private UnityEvent<PlayerController> OnPlayerTriggerEvent;
+
+
+    private void Awake()
+    {
+        OnPlayerTrigger += (PlayerController controller) => { OnPlayerTriggerEvent?.Invoke(controller); };
+    }
+
+    private void OnDestroy()
+    {
+        OnPlayerTrigger -= (PlayerController controller) => { OnPlayerTriggerEvent?.Invoke(controller); };
+    }
 
     private void OnTriggerEnter(Collider other)
     {
-        //TODO: Fix - TryGetComponent
-        if(other.GetComponent<PlayerController>())
+        
+        if(other.TryGetComponent<PlayerController>(out PlayerController playerController))
         {
-            //TODO: Fix - Could subscribe the unityEvent to the action in the OnValidate or in the Awake method
-            OnPlayerTriggerEvent.Invoke();
-            OnPlayerTrigger?.Invoke(other.GetComponent<PlayerController>());
+            OnPlayerTrigger?.Invoke(playerController);
         }
-
     }
 
     private void OnTriggerExit(Collider other)
     {
-        //TODO: Fix - TryGetComponent
-        if(other.GetComponent<PlayerController>())
+        if (other.TryGetComponent<PlayerController>(out PlayerController playerController))
         {
             OnPlayerTriggerExit?.Invoke(other.GetComponent<PlayerController>());
         }
